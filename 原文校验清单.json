@@ -1,0 +1,330 @@
+[
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/前置页/main.tex",
+    "sha256": "f66f5acea3a092a92c62600bf14001b5e8522f3570948b8725f86fc0134daea0"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/前置页/pages/page-0001.tex",
+    "sha256": "4834aeb1192695ed71bcddcc135cf337d8100785d9f961049e54a94e45c2668b"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/前置页/pages/page-0002.tex",
+    "sha256": "63d02d8243e9277c2c5cc593294b0ffa9c31e67e66499904eeac4b1dd0a5e45a"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/前置页/pages/page-0003.tex",
+    "sha256": "8b3dc8e26cea82ea82919322bee8e54b61e47318f92897b72e7697e9ccab3b22"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/前置页/pages/page-0004.tex",
+    "sha256": "bceaef336d51050bb99f4ca5711b9d51161412519057c676126be6f0703a98da"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/main.tex",
+    "sha256": "0b1d1fc3b029066606e394a207daf8210aff3634704b1626faf0e977a55faa82"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0005.tex",
+    "sha256": "98348fca61689c5ca0fbd4b01f39ff29c8073a5d5e4035c463412097d488ac2c"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0006.tex",
+    "sha256": "749eaae8d13d65ab78660bdaf8ebe169582f57a40117be2690c724f541888acf"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0007.tex",
+    "sha256": "f32587a4203a0e03128425e0f2e5126da813639b423cc73865b9b4d18f9fcda0"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0008.tex",
+    "sha256": "1e6bd3b800c4630f5792dbb0c6cf659e96ebc9374c38eb4f2ebf6700ecfeb54e"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0009.tex",
+    "sha256": "c65b404ca87939d15e8706c6d947d523bddcce98af142b58b2b5a65a77e47bb0"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0010.tex",
+    "sha256": "8c00f8e4e402f3325787d6b7d761b7797e89c32e23cdf5d789d55eace43df376"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0011.tex",
+    "sha256": "659cadddd5354702fd38438b765edb22ebe3cbd84189d9c7e8baee10eb23f5b0"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0012.tex",
+    "sha256": "b1f9396277d0d1d2157dba6408e1558f31766f356d0f47fd25e216460596b72c"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0013.tex",
+    "sha256": "96e8d9f20de020d31942bb75e5b074fd1123e427828f9230c05445e871e1894c"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0014.tex",
+    "sha256": "ce2fbf1fa909b61a7cdf51079ef3c618a5a5d35480db7ea95d119c11aa320b65"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0015.tex",
+    "sha256": "87ed26919863a9d062e8aa99538cec05adc39f16be604ce6f0443fd37e9a58f3"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0016.tex",
+    "sha256": "fccd22cbf14047ee1b703d928fe8805772ba995c73cd6a0d5c51d84bfbc5b449"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0017.tex",
+    "sha256": "a05873283a6c47ef644bb4e18c14e97aeb2ed1f7a04c5aa4d8dc31285658be9c"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第01章 什么是回归/pages/page-0018.tex",
+    "sha256": "60317534c70892372a245a0b84d7c15f06edf259a44ee08f9d96b3740e3e7fa8"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/main.tex",
+    "sha256": "fb19b69132158b01c578a7b595dcf3635d4ed2ad46a5907e7b02140aed214d25"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0019.tex",
+    "sha256": "0cc4ebad0156a2f79b9eea90ad14f357ad788a16222cfb71930b30c1a9072425"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0020.tex",
+    "sha256": "cbe4cee51bc6d95bb699926ab525ff122a7d9bd6384ee3d7d6a0e8b25c331b6a"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0021.tex",
+    "sha256": "746be06469e0437f2f0898f2061267a50773af6a5af0fd905a053d9cfb1a87fc"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0022.tex",
+    "sha256": "301c1347b4caa1c861e898673ac0a79229dd6f5dd9c6d432f4940c15bf02b1fb"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0023.tex",
+    "sha256": "d6a3c18f8af5848843e90f6b6444a5cc5dbdcd3c8fdff4dcc871dd116fa761c3"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0024.tex",
+    "sha256": "7d54a67dc4815158b78db80e31346c6813728b4c8e3aecf4c62fe018ed90ed1a"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0025.tex",
+    "sha256": "ab1efdfb3d2d761f96e2dc2a48a63841884c84912c71e43ca2acae1f28b7d802"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0026.tex",
+    "sha256": "dd8930135798efe7b4776a44767e5da4f2caedf3eaf2a4790a2e156663523c80"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0027.tex",
+    "sha256": "44b3d12088b0e1ef1bd5d43761afb7700be4ea34fd66ed126f2d25e1471a97ab"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0028.tex",
+    "sha256": "52a7a600ba71fa3d562ffa1a12c25a1f36e7d17a68706def989ab18e7af71448"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0029.tex",
+    "sha256": "702c8e40f8198a26271c4410932a1bf139fb1469ef5a799ffe33fae3928029f5"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0030.tex",
+    "sha256": "0a0fe9d0df2f05c8d7f89d6c2e4c094afa61a0391a19c7af7662ff0686f7d5da"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0031.tex",
+    "sha256": "f4d148e0298381c4dc135e0db14b02d01b79ab3a8d02292ab3ce7a50072b69ad"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0032.tex",
+    "sha256": "5cea07afd042ae6190feb24fd908a5f7fdc19fe9a995f187a3a2c304897fe0c4"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0033.tex",
+    "sha256": "eb9dc864713c9be9b14ba4791d15f715ec3377e826b08c8110aa6622cbf48946"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0034.tex",
+    "sha256": "ffb96cf06789b79e289e95cdb222290eada0c47e7bc89b9aaed1d8d654b8883f"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第02章 条件期望函数/pages/page-0035.tex",
+    "sha256": "f62c49dffbfeb96abfee2426fafc2da61ca2fa475b83e27b2fdec34510a1a040"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/main.tex",
+    "sha256": "6a0b8bb33ef05f9b43034f0b284c048f641e13e1e490aa9aefe3af0745297003"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0036.tex",
+    "sha256": "2a7d2ae919e8a178b24a18401e6d069f426f73df701da860b600efdac021ea32"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0037.tex",
+    "sha256": "20bf018c7c434d0aa5d7662990ef498aaf797d4c4838a5f0c9ebaf8333470f2b"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0038.tex",
+    "sha256": "9af859ba54da5816378f559dbebd582b16fe63ed46da0c759f8e2a6cd353bccd"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0039.tex",
+    "sha256": "4dea09262042c301967e7445489760b04f6b9091ba2ebe8e641d7601fabb1533"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0040.tex",
+    "sha256": "58375d901bacb6328c65789043499997eec136b2ccde458ad92087cf4988f3cd"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0041.tex",
+    "sha256": "38c2a59bc18c8a480188725d109ffef7de4899e788f5243136a69d07f6a8a9b7"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0042.tex",
+    "sha256": "b7c899a295ce8e6e61d84ade3e1250ae88ad9804f3b08498581ecd42d1e3efc3"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0043.tex",
+    "sha256": "051d8355be36e480edbd2743d19ef772bdc104d6da5d009fceee4a6f16e9b385"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0044.tex",
+    "sha256": "dc4391540835263af9193c2bd4209ab5d3f9a4cdffec83f0aa84ef6a2f54614f"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0045.tex",
+    "sha256": "80537f9ff95f5d144c18ece1b2b98e6e021b3ce4f258dc55998227861ef8b5b5"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0046.tex",
+    "sha256": "ec89abaf577502370b1f1b66bd7f590b6fbe108718119b74c3c712bc9d08a59f"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0047.tex",
+    "sha256": "0f40653b98c753d38582415e47b7cf893d828157f715618bc5b319d54c511768"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0048.tex",
+    "sha256": "50618a394f76ea389e478cf20dc2d6123b4f7865027fe7c677763d3ab44a260e"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0049.tex",
+    "sha256": "47f3c5dfb7a906ea0050abefd9adaf6a06bfe12cfe1fabc0fa3d579af8f3e6fb"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0050.tex",
+    "sha256": "42241bde278c9e0350bcbb0f29b6531483d5f4899c440df6603c3f94f3c4921e"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0051.tex",
+    "sha256": "5017020eb22beedeb6e7857521e6d66106a2fa6b6709baf52288408b0f96dd9f"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0052.tex",
+    "sha256": "9377e0af6670ca7706c6bf30982c487c22570251dec34c613a0a6d00dc4c3617"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0053.tex",
+    "sha256": "02dd3280009b05c4f8cd7085d2b9e8022e1a53446dc718a92689fe6ce9988e08"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0054.tex",
+    "sha256": "249fdb4656183e8d4f1efe71b201c6efa71774317b936c76ec9c92d5ccd18a43"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0055.tex",
+    "sha256": "f5e7f6fbf15230f3e12984a529f563d37204c9be0cbbf4576ee1ac43fb6f0b42"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0056.tex",
+    "sha256": "3ef8f637a21e17f4e3dd43ff026195d4dcf1d8923d1a1da69c8ae984f4d140fd"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0057.tex",
+    "sha256": "07da673fd365cdddbe8e40dbe1a1949c9f0f6634e06a38a9afbddf9196c6b9ce"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0058.tex",
+    "sha256": "f5a7489d0a1a9cb6651476f467ac83f90965ea6148fa280c0dffbda6ce8d1cc5"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0059.tex",
+    "sha256": "de729490d12d05f0cbe5538cf6457e7cf9ae76a14730e9c7b626de9da7c20a0f"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0060.tex",
+    "sha256": "08e38639952ca2c04dc0fe8aa2312c99003b33d401a34164140d71c32c02a4b6"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0061.tex",
+    "sha256": "5b106dc691987ae3d44af0e089caa13bbec85bc7f55179be837552d7e99aa153"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0062.tex",
+    "sha256": "534ac9f1c352b814a91df4d21158a5e961f9e1524ae428e71686350c81b14f17"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0063.tex",
+    "sha256": "1f933dfba9074507533043779dc5c674c313a122bfddde11920971f5fbf2425c"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0064.tex",
+    "sha256": "39cb8218169ee8b76570f451d88f141d72bde9c4f66fd076c69658d56ecc4c4e"
+  },
+  {
+    "path": "教材转换成果/回归分析/LaTeX源码/章节/第03章 古典线性回归模型/pages/page-0065.tex",
+    "sha256": "9bb352b5688b261c670282e4681bb9419addc046455fcc9a63cae04a4d147e88"
+  },
+  {
+    "path": "回归分析/第一次作业/main.tex",
+    "sha256": "63994a2f212054668616b608a8600b06166e3a2b4d6580671546e34308b97923"
+  },
+  {
+    "path": "回归分析/第二次作业/main.tex",
+    "sha256": "f0ef33c577d2730291621b6cc5baf708d861b1d3b2dd719337d596577ef2f9ab"
+  },
+  {
+    "path": "回归分析/第三次作业/main.tex",
+    "sha256": "229240e8aed5a3090635c7582aa3c9718c92516a1458bee1baa6b5d585e627a6"
+  },
+  {
+    "path": "回归分析/回归分析60题答案/main.tex",
+    "sha256": "b73caa336b830c5b3b132a2d8441b4c15f62dacfb7ff3a635bf48c99fdc8b3e4"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0002.tex",
+    "sha256": "924631d952aae7580032fa26eb60bc299b1dbab902b51408d72408123c830b64"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0003.tex",
+    "sha256": "8cd67ac5aeaa4fb9107209d3f0dc76fc44c0734c1ff25c88c7d0e1e7bf23fc6f"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0004.tex",
+    "sha256": "3c63db5de7ed77183f5e913844455eefeee9dd895f12b9217c3884def3e17e32"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0005.tex",
+    "sha256": "bf116a2349b62b77deb13c5aebf6e0d90fb769ec394f7afbc3d0d5e3b6813ad7"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0006.tex",
+    "sha256": "6b197191953c07da43c40a9944adc169f957e461679a90604d6d3457f632d491"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0007.tex",
+    "sha256": "7661911a4c28ff00495929c42ee32e9646607358af87190d137801271504878a"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0008.tex",
+    "sha256": "c5bf4b13e1dea6dfe93dc59988096892f32a71219f033e3caa5beaa113886fc2"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0009.tex",
+    "sha256": "675f5245ff2804e223e4f936944f4b9b9a05f38c24b5e66aed56c4760b6085f5"
+  },
+  {
+    "path": "回归分析/教材LaTeX/2026-10-01-60题原题/pages/page-0010.tex",
+    "sha256": "0446e34303da14c762b17527afd0937975c1a294b4b471659f9e3b747eb3332b"
+  }
+]

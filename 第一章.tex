@@ -1,0 +1,134 @@
+\chapter{什么是回归}
+
+\section*{回归分析的功能结构}
+\phantomsection
+\addcontentsline{toc}{section}{回归分析的功能结构}
+\begingroup\small
+\dirtree{%
+.1 回归分析：用解释变量研究响应变量的条件分布.
+.2 研究对象：随机向量 $(Y,X')'$ 与观测样本.
+.3 条件均值回答平均怎样变化；条件方差回答波动怎样变化.
+.2 描述关系：哪些变量共同变化，怎样组织模型？.
+.3 工具：协方差、相关系数、领域理论、DAG（第1章）.
+.3 区分相关、预测与因果；因果解释还需识别假设.
+.2 预测响应：给定 $X$，怎样预测 $Y$？.
+.3 全部平方可积函数中选 CEF，最小化 MSE（第2章）.
+.3 限制为仿射函数，得到最优线性投影（第2章）.
+.3 用样本矩替代总体矩，得到 OLS（第3章）.
+.2 量化不确定性：系数可靠吗，限制成立吗？.
+.3 工具：外生性、球形方差、Gauss--Markov（第3章）.
+.3 正态假设给出精确分布、$t/F$ 检验与区间（第3章）.
+.3 已知线性限制可用 CLS，提高估计效率（第3章）.
+.3 大样本理论与高维方法（第4、5章，本次正文未展开）.
+.2 检查模型：所拟合的对象是否回答原问题？.
+.3 正确设定：CEF 与线性投影何时一致（第2章）.
+.3 检查秩、外生性、同方差、正态性各自支持什么结论.
+.3 拟合优度描述样本解释率；预测需关注样本外表现.
+.2 连接各部分的工具链.
+.3 条件期望与矩：把预测问题写成正交条件.
+.3 线性代数与矩阵求导：从正交条件到投影和 OLS.
+.3 正态向量与二次型：从投影到抽样分布和检验.
+}
+\endgroup
+\smallskip
+这棵树是按功能重组的个人学习框架。划分参考 CMU 的
+\href{https://www.stat.cmu.edu/~cshalizi/mreg/15/}{Cosma Shalizi：Modern Regression（2015）}
+中预测、估计、推断、假设检查与模型选择的安排，以及
+\href{https://www.stat.cmu.edu/~larry/=stat401/}{Larry Wasserman：Modern Regression（2017）}
+的课程进路；上树的中文分组和本讲义章次映射由东邪整理。
+\par\smallskip
+前三章把“研究关系”连到“选择总体预测器”，再连到“样本估计及推断”。预测损失、模型设定与因果识别是不同问题，不能仅凭显著系数或较高 $R^2$ 替代后两者的论证。
+\clearpage
+\begin{introduction}[本章的作用]
+\item 用相关系数度量线性共同变动。
+\item 用条件分布与领域知识提出模型。
+\item 用 DAG 检查路径与控制变量的作用。
+\end{introduction}
+\section{回归对象与条件均值}
+
+% SOURCE: 原文未编号概念或必要公式; page-0005.tex
+\begin{definition}[回归分析与 CEF]\label{reg:entry:1}
+响应变量 $Y$ 为标量，解释变量 $X$ 为向量。回归分析研究 $Y$ 随 $X$ 的取值而变化的规律，尤其是条件分布及条件均值。若 $\E|Y|<\infty$，记
+\[\mu(x)=\E[Y\mid X=x],\qquad Y=\mu(X)+e,\qquad \E[e\mid X]=0.\]
+在连续情形且 $f_X(x)>0$ 时，$f_{Y\mid X}(y\mid x)=f_{X,Y}(x,y)/f_X(x)$，
+\[\mu(x)=\int_{\R}y f_{Y\mid X}(y\mid x)\,dy.\]
+可用于描述关系和预测；把关系解释为因果效应，需要额外识别条件。
+\end{definition}
+
+% SOURCE: 原文未编号概念或必要公式; page-0007.tex 至 page-0010.tex
+\begin{proposition}[二元正态的回归关系]\label{reg:entry:2}
+设 $(X,Y)$ 联合正态，均值为 $\mu_X,\mu_Y$，方差为 $\sigma_X^2,\sigma_Y^2>0$，相关参数 $|\rho|<1$。令 $z_X=(x-\mu_X)/\sigma_X$、$z_Y=(y-\mu_Y)/\sigma_Y$，其联合密度为
+\[f(x,y)=\frac{\exp\!\left[-\frac{z_X^2-2\rho z_Xz_Y+z_Y^2}{2(1-\rho^2)}\right]}{2\pi\sigma_X\sigma_Y\sqrt{1-\rho^2}}.\]
+边缘分布分别为 $N(\mu_X,\sigma_X^2)$、$N(\mu_Y,\sigma_Y^2)$，并且
+\begin{align*}
+Y\mid X&\sim N\!\left(\mu_Y+\rho\frac{\sigma_Y}{\sigma_X}(X-\mu_X),\,\sigma_Y^2(1-\rho^2)\right),\\
+X\mid Y&\sim N\!\left(\mu_X+\rho\frac{\sigma_X}{\sigma_Y}(Y-\mu_Y),\,\sigma_X^2(1-\rho^2)\right).
+\end{align*}
+两个方向的斜率为 $\beta_{Y\mid X}=\rho\sigma_Y/\sigma_X$ 与 $\beta_{X\mid Y}=\rho\sigma_X/\sigma_Y$；乘积为 $\rho^2$，当两方差相等时两斜率相同。
+\end{proposition}
+
+\section{相关性}
+
+% SOURCE: 定义 1.2.1; page-0010.tex
+\begin{definition}[相关系数]\label{reg:entry:3}
+若 $X,Y$ 的二阶矩有限且方差均正，定义
+\[\rho_{XY}=\frac{\Cov(X,Y)}{\sqrt{\Var(X)\Var(Y)}}
+=\frac{\E[XY]-\E[X]\E[Y]}{\sqrt{\Var(X)\Var(Y)}}.\]
+其中 $\Cov(X,Y)=\E[(X-\E X)(Y-\E Y)]$。
+\end{definition}
+
+% SOURCE: 定理 1.2.1; page-0011.tex
+\begin{theorem}[相关系数与 Cauchy--Schwarz]\label{reg:entry:4}
+设 $X,Y$ 二阶矩有限。
+\begin{enumerate}
+\item 若 $X,Y$ 独立，则协方差为零；方差正时 $\rho_{XY}=0$。一般逆命题不成立。
+\item $\E|XY|\leq\sqrt{\E[X^2]\E[Y^2]}$。
+\item 若两方差均正，则 $|\rho_{XY}|\leq1$。
+\end{enumerate}
+联合正态时，零相关等价于独立。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0013.tex
+\begin{definition}[样本相关系数]\label{reg:entry:5}
+对于配对样本 $(X_i,Y_i)_{i=1}^n$，令 $\bar X=n^{-1}\sum_i X_i$、$\bar Y=n^{-1}\sum_iY_i$，$s_X^2=n^{-1}\sum_i(X_i-\bar X)^2$、$s_Y^2=n^{-1}\sum_i(Y_i-\bar Y)^2$。若 $s_Xs_Y>0$，定义
+\[R=\frac{n^{-1}\sum_i X_iY_i-\bar X\bar Y}{s_Xs_Y}
+=\frac{\sum_i(X_i-\bar X)(Y_i-\bar Y)}{\sqrt{\sum_i(X_i-\bar X)^2\sum_i(Y_i-\bar Y)^2}}.\]
+\end{definition}
+
+% SOURCE: 定理 1.2.2; page-0012.tex
+\begin{theorem}[样本相关系数的一致性]\label{reg:entry:6}
+若配对样本独立同分布，$\E X^2,\E Y^2<\infty$ 且总体两方差均正，则在样本相关系数定义的事件上，$R\xrightarrow{P}\rho_{XY}$；该事件的概率趋于 $1$。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0014.tex
+\begin{proposition}[相关性与因果关系]\label{reg:entry:7}
+相关系数只衡量线性关联。零相关不能排除非线性依赖；相关不等于因果，共同原因、选择机制等都可能产生关联。用回归系数解释因果效应时，必须另行说明研究设计和识别假设。
+\end{proposition}
+
+\section{构建回归模型的步骤}
+
+% SOURCE: 原文未编号概念或必要公式; page-0014.tex 至 page-0016.tex
+\begin{proposition}[四步建模及两类假设]\label{reg:entry:8}
+\begin{enumerate}
+\item 收集数据并作描述性分析，寻找需要解释的模式。
+\item 结合领域知识建立理论模型，确定对象、变量和作用机制。
+\item 选择函数形式、未知参数及误差条件，进行估计和检验。
+\item 用模型解释或预测，并检查结论是否适用于原问题。
+\end{enumerate}
+要分清函数形式及变量选择等\textbf{模型设定假设}，与估计和推断所需的\textbf{统计假设}；估计量表现良好并不能证明函数形式正确。
+\end{proposition}
+
+\section{有向无环图与路径}
+
+% SOURCE: 原文未编号概念或必要公式; page-0016.tex
+\begin{definition}[DAG]\label{reg:entry:9}
+有向无环图（directed acyclic graph）以节点表示变量，以有向边表示假定的因果方向，且不存在有向循环。讲义用实心节点表示可观测变量、空心节点表示不可观测变量。箭头编码的是模型假设，不能仅从相关系数推出。
+\end{definition}
+
+% SOURCE: 原文未编号概念或必要公式; page-0016.tex 至 page-0018.tex
+\begin{proposition}[三种基本路径的功能]\label{reg:entry:10}
+链 $X\to M\to Y$ 表示中介路径；分叉 $X\leftarrow C\to Y$ 表示共同原因路径；碰撞结构 $X\to C\leftarrow Y$ 的中间节点称为碰撞点。
+按 DAG 的路径阻断规则，前两条路径在未控制中间节点时开放，控制中间节点则阻断；碰撞路径默认阻断，控制碰撞点或其后代可能使它开放。
+在采用图的 Markov 条件时，所有路径被阻断（d-separation）才给出相应条件独立；一条路径开放只表示图不强制独立，不保证实际相关系数非零。控制混杂变量可阻断相应后门路径，但能否识别因果效应须检查全部相关路径和识别条件。
+\end{proposition}
+

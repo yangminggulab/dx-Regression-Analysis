@@ -1,0 +1,634 @@
+\begingroup
+\chapter*{第二章作业：条件期望函数}
+\addcontentsline{toc}{chapter}{第二章作业：条件期望函数}
+\markboth{第二章作业：条件期望函数}{第二章作业：条件期望函数}
+\setcounter{section}{0}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{2}
+\renewcommand{\theHsection}{reg.homework.2.\arabic{section}}
+
+\section{第一次作业}\label{hw:reg:assignment:1}
+
+阅读至第 2.1.2 节前；整理相关系数、重期望公式与最优预测的证明，完成练习 1--6。相关系数需正方差；最优平方损失预测需 $\E Y^2<\infty$。
+
+\subsection*{课程笔记}
+
+\begin{proposition}[阅读笔记：协方差与相关系数]\label{hw:reg:note:1:1}
+若 $X,Y$ 二阶矩有限，协方差定义为
+\[
+\Cov(X,Y)=\E[(X-\E X)(Y-\E Y)]
+=\E(XY)-\E X\,\E Y.
+\]
+它刻画两个变量的线性共同变动，具有
+\[
+\Cov(aX+b,cY+d)=ac\,\Cov(X,Y),\qquad
+|\Cov(X,Y)|\leq\sqrt{\Var(X)\Var(Y)}.
+\]
+当 $\Var(X),\Var(Y)>0$ 时，相关系数为
+\[
+\rho_{XY}=\frac{\Cov(X,Y)}
+{\sqrt{\Var(X)\Var(Y)}}\in[-1,1].
+\]
+$|\rho|=1$ 当且仅当 $Y-\E Y=c(X-\E X)$ 几乎处处成立。独立必然推出零相关，但零相关通常不能推出独立；若 $(X,Y)$ 联合正态，则零相关与独立等价。
+
+样本相关系数是
+\[
+R=\frac{\sum_{i=1}^n(X_i-\bar X)(Y_i-\bar Y)}
+{\sqrt{
+\left[\sum_{i=1}^n(X_i-\bar X)^2\right]
+\left[\sum_{i=1}^n(Y_i-\bar Y)^2\right]
+}},
+\]
+它对平移与正比例缩放不变。相关性只表示线性关系强弱，不自动表示因果关系。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：重期望公式及证明]\label{hw:reg:note:1:2}
+若 $\E|Y|<\infty$，则
+\[
+\E\{\E(Y\mid X)\}=\E Y.
+\]
+连续情形中，设联合密度为 $f(x,y)$，边缘密度为 $f_X(x)$，条件密度为 $f(y\mid x)$，则
+\begin{align*}
+\E\{\E(Y\mid X)\}
+&=\int\left[\int y f(y\mid x)\,dy\right]f_X(x)\,dx\\
+&=\iint y f(x,y)\,dy\,dx\\
+&=\int y f_Y(y)\,dy=\E Y.
+\end{align*}
+更一般地，只要 $\E|G(X,Y)|<\infty$，
+\[
+\E\{\E[G(X,Y)\mid X]\}=\E G(X,Y).
+\]
+证明的本质是：先在每个给定 $X=x$ 的子总体内平均，再按 $X$ 的分布加权，恰好恢复总体平均。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：最优预测及证明]\label{hw:reg:note:1:3}
+用平方损失预测 $Y$，对任意可测且平方可积的函数 $g(X)$，定义
+\[
+\operatorname{MSE}(g)=\E[(Y-g(X))^2].
+\]
+令 $\mu(X)=\E(Y\mid X)$。把误差分解为
+\[
+Y-g(X)=\{Y-\mu(X)\}+\{\mu(X)-g(X)\}.
+\]
+平方并取期望。交叉项等于
+\[
+\E\!\left[\{\mu(X)-g(X)\}\E\{Y-\mu(X)\mid X\}\right]=0.
+\]
+因此
+\[
+\operatorname{MSE}(g)
+=\E[(Y-\mu(X))^2]+\E[(\mu(X)-g(X))^2].
+\]
+第一项与 $g$ 无关，第二项非负，所以 $g(X)=\mu(X)$ 时均方误差最小。故条件期望是平方损失下的最优预测。
+\end{proposition}
+
+
+\Needspace{10\baselineskip}
+\subsection*{练习 1：二元正态与独立性}
+\begin{homework}[练习 1]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+设 $(X,Y)$ 服从二元正态分布 $N(\mu_1,\mu_2,\sigma_1^2,\sigma_2^2,\rho)$，其中 $\sigma_1,\sigma_2>0$、$|\rho|<1$。证明 $X,Y$ 的相关系数为 $\rho_{XY}=\rho$；在二元正态条件下，$\rho=0$ 是 $X,Y$ 相互独立的充要条件。
+\end{homework}
+\begin{solution}
+二元正态的协方差矩阵为
+\[
+\Sigma=\begin{pmatrix}
+\sigma_1^2&\rho\sigma_1\sigma_2\\
+\rho\sigma_1\sigma_2&\sigma_2^2
+\end{pmatrix}.
+\]
+所以 $\Cov(X,Y)=\rho\sigma_1\sigma_2$，从而 $\rho_{XY}=\rho$。独立必然推出协方差为零；反过来，在联合正态条件下，$\rho=0$ 使联合密度分解为两个边缘密度之积，因此 $X,Y$ 独立。
+\end{solution}
+\begin{dxtips}[二元正态与独立性]\label{hw:reg:tip:1}
+零协方差推出独立必须使用联合正态条件；一般随机变量只有独立推出零协方差。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 2：Cauchy--Schwarz 及等号条件}
+\begin{homework}[练习 2]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+设 $X,Y$ 二阶矩有限。证明柯西--施瓦茨不等式，讨论等号成立的条件。需区分 $|\E(XY)|\leq\sqrt{\E X^2\E Y^2}$ 和 $\E|XY|\leq\sqrt{\E X^2\E Y^2}$ 两种形式。
+\end{homework}
+\begin{solution}
+若 $\E(Y^2)>0$，对任意 $t$，
+\[
+0\leq \E(X-tY)^2
+=\E X^2-2t\E(XY)+t^2\E Y^2.
+\]
+取 $t=\E(XY)/\E(Y^2)$ 即得不等式。当 $\E Y^2>0$ 时，等号成立当且仅当 $X=tY$ 几乎处处。若 $\E Y^2=0$，则 $Y=0$ 几乎处处，不等式恒取等号，无须 $X=0$。统一条件是存在不全为零的常数 $a,b$ 使 $aX+bY=0$ 几乎处处。
+对绝对乘积形式，把同一证明用于 $|X|,|Y|$，得到 $\E|XY|\leq\sqrt{\E X^2\E Y^2}$；非退化时其等号条件为 $|X|=c|Y|$ 几乎处处。
+\end{solution}
+\begin{dxtips}[Cauchy--Schwarz 及等号条件]\label{hw:reg:tip:2}
+二阶矩为零的变量几乎处处为零。非退化时对 $\E(X-tY)^2$ 最小化；绝对乘积形式则把 $X,Y$ 换成 $|X|,|Y|$。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 3：期望的绝对值}
+\begin{homework}[练习 3]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+证明期望不等式：对可积随机变量 $X$，有 $|\E X|\leq\E|X|$。原题提示：利用詹森不等式。
+\end{homework}
+\begin{solution}
+$\phi(x)=|x|$ 为凸函数，由 Jensen 不等式
+\[
+|\E X|=\phi(\E X)\leq\E\phi(X)=\E|X|.
+\]
+\end{solution}
+\begin{dxtips}[期望的绝对值]\label{hw:reg:tip:3}
+先检查可积性；绝对值是凸函数，直接应用 Jensen。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 4：线性条件均值下的混合矩}
+\begin{homework}[练习 4]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+若 $\E[Y\mid X]=a+bX$，请证明 $\E[YX]$ 是 $X$ 的矩的函数。假定相关期望存在，例如 $X,Y$ 二阶矩有限。
+\end{homework}
+\begin{solution}
+\[
+\E(YX)=\E\{X\E(Y\mid X)\}
+=a\E X+b\E(X^2).
+\]
+\end{solution}
+\begin{dxtips}[线性条件均值下的混合矩]\label{hw:reg:tip:4}
+先对 X 条件化，再把可测的 X 提出。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 5：条件混合矩与重期望}
+\begin{homework}[练习 5]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+如果 $\E[Y\mid X]=a+bX$，请证明 $\E[YX]$ 是 $X$ 的矩的函数。假定相关期望存在，例如 $X,Y$ 二阶矩有限。此题与第 4 题重复，沿用原题编号分别保留。
+\end{homework}
+\begin{solution}
+因为 $X$ 对 $\sigma(X)$ 可测，
+\[
+\E(YX\mid X)=X\E(Y\mid X)=aX+bX^2.
+\]
+两边取无条件期望即得 $\E(YX)=a\E X+b\E(X^2)$。
+\end{solution}
+\begin{dxtips}[条件混合矩与重期望]\label{hw:reg:tip:5}
+原题重复不意味着漏题：此处从条件混合矩写起，再用重期望，保留另一种书写顺序。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 6：广义重期望}
+\begin{homework}[练习 6]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+对任意可测函数 $G(X,Y)$，若 $\E|G(X,Y)|<\infty$，证明
+\[\E_X\bigl[\E_Y[G(X,Y)\mid X]\bigr]=\E_{X,Y}[G(X,Y)].\]
+\end{homework}
+\begin{solution}
+根据条件期望的定义，对全集 $\Omega\in\sigma(X)$ 有
+\[
+\int_\Omega \E(G\mid X)\,dP=\int_\Omega G\,dP.
+\]
+左、右两边正是 $\E\{\E(G\mid X)\}$ 与 $\E G$，所以结论成立。
+\end{solution}
+\begin{dxtips}[广义重期望]\label{hw:reg:tip:6}
+条件期望的定义直接包含对全集积分的恒等式，证明不限于存在密度的情形。
+\end{dxtips}
+
+\subsection*{知识点定位}\begin{center}\begin{tabular}{ll}\toprule 题号 & 核心方法\\\midrule
+
+1 & 二元正态与独立性 \\
+
+2 & Cauchy--Schwarz 及等号条件 \\
+
+3 & 期望的绝对值 \\
+
+4 & 线性条件均值下的混合矩 \\
+
+5 & 条件混合矩与重期望 \\
+
+6 & 广义重期望 \\
+
+\bottomrule\end{tabular}\end{center}
+\section{第二次作业}\label{hw:reg:assignment:2}
+
+阅读至第 2.3 节前；整理条件方差、CEF 误差和最优线性预测，完成练习 8、9、10、11、18。各二阶矩公式按相应平方可积条件使用。
+
+\subsection*{课程笔记}
+
+\begin{proposition}[阅读笔记：条件方差与全方差公式]\label{hw:reg:note:2:1}
+条件方差为
+\[
+\Var(Y\mid X)=\E(Y^2\mid X)-\{\E(Y\mid X)\}^2.
+\]
+令 $\mu(X)=\E(Y\mid X)$，则
+\[
+Y-\E Y=\{Y-\mu(X)\}+\{\mu(X)-\E Y\}.
+\]
+两部分正交，因为 $\E[Y-\mu(X)\mid X]=0$。因此
+\[
+\Var(Y)=\E\{\Var(Y\mid X)\}
++\Var\{\E(Y\mid X)\}.
+\]
+第一项是无法由 $X$ 解释的平均波动，第二项是不同 $X$ 子总体条件均值之间的波动。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：CEF 误差与正交性]\label{hw:reg:note:2:2}
+把
+\[
+Y=\mu(X)+e,\qquad \mu(X)=\E(Y\mid X)
+\]
+称为条件期望函数分解。由定义
+\[
+\E(e\mid X)=0.
+\]
+于是对任意满足 $\E|h(X)e|<\infty$ 的可测函数 $h(X)$，
+\[
+\E[h(X)e]=\E\{h(X)\E(e\mid X)\}=0.
+\]
+因此 CEF 误差不仅与 $X$ 正交，也与 $X$ 的任意可测变换正交。需要注意：$\E(Xe)=0$ 只是一个无条件矩条件，通常不能反推出 $\E(e\mid X)=0$。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：线性 CEF 与最优线性预测]\label{hw:reg:note:2:3}
+若 $\E(Y\mid X)=X'\beta$，则条件均值被正确设定为线性函数。即使真实 CEF 非线性，也可以在所有线性函数中寻找
+\[
+\beta=\arg\min_b\E[(Y-X'b)^2].
+\]
+一阶条件为
+\[
+\E[X(Y-X'\beta)]=0,
+\]
+若 $\E(XX')$ 可逆，则
+\[
+\beta=\{\E(XX')\}^{-1}\E(XY).
+\]
+该 $X'\beta$ 是最优线性预测。线性投影误差只保证 $\E(Xe)=0$；只有模型正确设定时，才进一步有 $\E(e\mid X)=0$。
+\end{proposition}
+
+
+\Needspace{10\baselineskip}
+\subsection*{练习 8：回归误差的高阶矩}
+\begin{homework}[练习 8]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+在线性模型 $Y=X'\beta+e$ 下，采用有限二阶矩及 $Q_{XX}=\E[XX']\succ0$ 的总体假设（原习题称“假设 2.1”，讲义对应假设 2.2.1）。证明若
+\[\E|Y|^r<\infty,\qquad\E\|X\|^r<\infty,\qquad r\geq2,\]
+则 $\E|e|^r<\infty$。原题提示：使用 Minkowski 不等式，对于 $p\geq1$，
+\[(\E|U+V|^p)^{1/p}\leq(\E|U|^p)^{1/p}+(\E|V|^p)^{1/p}.\]
+\end{homework}
+\begin{solution}
+由 $e=Y-X'\beta$、Minkowski 不等式和 $|X'\beta|\leq\|X\|\|\beta\|$，
+\[
+(\E|e|^r)^{1/r}
+\leq(\E|Y|^r)^{1/r}
++\|\beta\|(\E\|X\|^r)^{1/r}<\infty.
+\]
+因此 $\E|e|^r<\infty$。
+\end{solution}
+\begin{dxtips}[回归误差的高阶矩]\label{hw:reg:tip:8}
+先用向量 Cauchy--Schwarz 把 $|X^{\mathsf T}\beta|$ 控制为 $\|X\|\|\beta\|$，再用 Minkowski。该矩界本身不依赖投影最优性。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 9：乘法异方差模型}
+\begin{homework}[练习 9]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+假设 $Y=\beta_0+\beta_1X_1+|X_1|e$，其中 $\E X_1=0$、$\Var(X_1)=\sigma_{X_1}^2>0$，$\E e=0$、$\Var(e)=\sigma_e^2>0$，$e$ 与 $X_1$ 相互独立，$\beta_0,\beta_1$ 是未知参数。
+\begin{enumerate}
+\item 求 $\E[Y\mid X_1]$。
+\item 求 $\Var(Y\mid X_1)$。
+\item 证明 $\beta_1=0$ 当且仅当 $\Cov(X_1,Y)=0$。
+\end{enumerate}
+\end{homework}
+\begin{solution}
+\[
+\E(Y\mid X_1)=\beta_0+\beta_1X_1,
+\qquad
+\Var(Y\mid X_1)=X_1^2\sigma_e^2.
+\]
+又因为 $\E[X_1|X_1|e]=\E[X_1|X_1|]\E e=0$，
+\[
+\Cov(X_1,Y)=\beta_1\Var(X_1)=\beta_1\sigma_{X_1}^2.
+\]
+$\sigma_{X_1}^2>0$，所以 $\beta_1=0$ 当且仅当 $\Cov(X_1,Y)=0$。
+\end{solution}
+\begin{dxtips}[乘法异方差模型]\label{hw:reg:tip:9}
+条件化后 $|X_1|$ 是常数，所以方差会带 $X_1^2$。斜率与协方差等价的关键是 $\Var(X_1)>0$。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 10：遗漏交互项}
+\begin{homework}[练习 10]
+\textsf{来源：《回归分析 60 题》已有原题第 2 页文件。}\par
+总体模型为 $Y=0.8X_1X_2+e$，其中 $X_1,X_2,e$ 相互独立且均服从 $N(0,1)$。令 $X=(1,X_1,X_2)'$。假设利用只含截距和两个主效应的线性回归模型 $Y=X'\beta+u$ 刻画 $Y$ 与 $X$ 的相关关系，有什么问题？原题沿用 $e$ 表示该拟合误差；这里改记 $u$，以免与真实噪声混淆。
+\end{homework}
+\begin{solution}
+真实条件均值为
+\[
+\E(Y\mid X_1,X_2)=0.8X_1X_2,
+\]
+它不是 $(1,X_1,X_2)$ 的线性函数。由于各变量独立标准正态，
+\[
+\E Y=\E(X_1Y)=\E(X_2Y)=0,
+\]
+所以该线性投影的三个系数全为零。模型遗漏了关键交互项 $X_1X_2$，会把真实可预测结构误判为“没有关系”。\par 又 $\E[XX']=I_3$，故 $\beta^*=0$。若加入交互项 $X_1X_2$，最优系数为 $(0,0,0,0.8)'$，可恢复真实 CEF。
+\end{solution}
+\begin{dxtips}[遗漏交互项]\label{hw:reg:tip:10}
+交互作用可以存在而所有主效应投影系数都为零。加入 $X_1X_2$ 后对参数仍是线性模型。原设定投影 MSE 为 $1.64$，真实 CEF 的 MSE 为 $1$。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 11：离散条件矩}
+\begin{homework}[练习 11]
+\textsf{来源：《回归分析 60 题》已有原题第 3 页文件。}\par
+随机变量 $X,Y$ 只能取 $0$ 或 $1$，联合分布如下（行标为 $Y$，列标为 $X$）：
+\[\begin{array}{c|cc}&X=0&X=1\\\hline Y=0&0.1&0.2\\Y=1&0.4&0.3\end{array}\]
+求 $X=0$ 或 $X=1$ 时 $\E[Y\mid X]$、$\E[Y^2\mid X]$ 和 $\Var(Y\mid X)$。
+\end{homework}
+\begin{solution}
+$P(X=0)=P(X=1)=0.5$，且 $Y^2=Y$。因此
+\[
+\begin{array}{c|ccc}
+&\E(Y\mid X)&\E(Y^2\mid X)&\Var(Y\mid X)\\\midrule
+X=0&0.8&0.8&0.16\\
+X=1&0.6&0.6&0.24
+\end{array}
+\]
+\end{solution}
+\begin{dxtips}[离散条件矩]\label{hw:reg:tip:11}
+必须先确认表格方向，再计算每列的边际概率。$Y$ 为 Bernoulli 型取值，故 $Y^2=Y$、条件方差为 $p(1-p)$。
+\end{dxtips}
+
+\Needspace{10\baselineskip}
+\subsection*{练习 18：线性预测与 CEF}
+\begin{homework}[练习 18]
+\textsf{来源：《回归分析 60 题》已有原题第 3 页文件。}\par
+设 $X,Y$ 的联合概率密度为 $f(x,y)=\frac32(x^2+y^2)$，其中 $0\leq x,y\leq1$（其余处为零）。求最优线性预测 $\alpha+\beta X$ 的系数，算出 $\mu(x)=\E[Y\mid X=x]$；最优线性预测与条件期望是否相同？
+\end{homework}
+\begin{solution}
+积分得到
+\[
+\E X=\E Y=\frac58,\quad
+\E X^2=\frac7{15},\quad
+\E(XY)=\frac38.
+\]
+故
+\[
+\Var(X)=\frac{73}{960},\qquad
+\Cov(X,Y)=-\frac1{64},
+\]
+\[
+\beta=\frac{\Cov(X,Y)}{\Var(X)}=-\frac{15}{73},
+\qquad
+\alpha=\E Y-\beta\E X=\frac{55}{73}.
+\]
+最优线性预测为
+\[
+\widehat Y_L=\frac{55}{73}-\frac{15}{73}X.
+\]
+又
+\[
+f_X(x)=\frac32\left(x^2+\frac13\right),
+\]
+所以
+\[
+\mu(x)=\E(Y\mid X=x)
+=\frac{x^2/2+1/4}{x^2+1/3}
+=\frac{3(2x^2+1)}{4(3x^2+1)}.
+\]
+$\mu(x)$ 非线性，故条件期望与最优线性预测不同。
+\end{solution}
+\begin{dxtips}[线性预测与 CEF]\label{hw:reg:tip:18}
+先用总体矩求仿射预测，再用条件密度求 CEF；两者优化的候选函数类不同。
+\end{dxtips}
+
+\subsection*{知识点定位}\begin{center}\begin{tabular}{ll}\toprule 题号 & 核心方法\\\midrule
+
+8 & 回归误差的高阶矩 \\
+
+9 & 乘法异方差模型 \\
+
+10 & 遗漏交互项 \\
+
+11 & 离散条件矩 \\
+
+18 & 线性预测与 CEF \\
+
+\bottomrule\end{tabular}\end{center}
+\endgroup
+\begingroup
+\chapter*{第三章作业：古典线性回归模型}
+\addcontentsline{toc}{chapter}{第三章作业：古典线性回归模型}
+\markboth{第三章作业：古典线性回归模型}{第三章作业：古典线性回归模型}
+\setcounter{section}{0}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thechapter}{3}
+\renewcommand{\theHsection}{reg.homework.3.\arabic{section}}
+
+\section{第三次作业}\label{hw:reg:assignment:3}
+\setlength{\abovedisplayskip}{6pt}
+\setlength{\belowdisplayskip}{6pt}
+\setlength{\abovedisplayshortskip}{4pt}
+\setlength{\belowdisplayshortskip}{4pt}
+
+整理第二章剩余内容和第 3.2、3.3 节的全部已有阅读笔记。此次数学作业没有另列习题。总体矩公式要求有限二阶矩；总体 $R^2$ 要求 $\Var(Y)>0$；样本 $R^2$ 要求 TSS 正，OLS 与方差修正要求满列秩及 $n>K$。
+
+\subsection*{第二章：条件期望函数的剩余内容}
+
+\begin{proposition}[阅读笔记：条件方差、CEF 误差与全方差分解]\label{hw:reg:note:3:1}
+设 $\mu(X)=\E(Y\mid X)$，定义 CEF 误差
+\[
+e=Y-\mu(X).
+\]
+则
+\[
+\E(e\mid X)=0,\qquad \E[h(X)e]=0
+\]
+对任意适当的可测函数 $h$ 都成立。条件方差为
+\[
+\sigma^2(X)=\Var(Y\mid X)=\E(e^2\mid X)
+=\E(Y^2\mid X)-\mu(X)^2.
+\]
+总体波动可分解为
+\[
+\Var(Y)=\E\{\Var(Y\mid X)\}
++\Var\{\E(Y\mid X)\}.
+\]
+前者是平均条件噪声，后者是由解释变量引起的条件均值变动。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：最优线性预测]\label{hw:reg:note:3:2}
+当只允许使用线性函数 $X'b$ 预测 $Y$ 时，定义
+\[
+\beta=\arg\min_b\E[(Y-X'b)^2].
+\]
+目标函数对 $b$ 的一阶条件为
+\[
+\E[X(Y-X'\beta)]=0.
+\]
+若 $Q=\E(XX')$ 正定，则
+\[
+\beta=Q^{-1}\E(XY).
+\]
+记投影误差 $e_L=Y-X'\beta$，则
+\[
+\E(Xe_L)=0.
+\]
+这是一组无条件正交条件。若真实条件均值恰为线性函数，
+\[
+\E(Y\mid X)=X'\beta,
+\]
+则投影误差还满足更强的 $\E(e_L\mid X)=0$。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：投影误差与拟合优度的总体形式]\label{hw:reg:note:3:3}
+若 $X$ 含常数项，线性投影误差均值为零。由正交性，
+\[
+\E(Y^2)=\E[(X'\beta)^2]+\E(e_L^2).
+\]
+中心化后可写为
+\[
+\Var(Y)=\Var(X'\beta)+\Var(e_L).
+\]
+总体线性拟合优度可定义为
+\[
+R^2=\frac{\Var(X'\beta)}{\Var(Y)}
+=1-\frac{\Var(e_L)}{\Var(Y)}.
+\]
+$R^2$ 描述线性投影解释的方差比例，但不能单独证明因果关系，也不能保证模型设定正确。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：条件均值模型的正确设定]\label{hw:reg:note:3:4}
+模型 $m(X,\theta)$ 正确设定，表示存在真值 $\theta_0$ 使
+\[
+\E(Y\mid X)=m(X,\theta_0).
+\]
+若错误地把非线性 CEF 设为线性函数，OLS 仍可估计最优线性近似，但系数只解释线性投影，不再等同于真实 CEF 的结构参数。判断模型设定时应：
+\begin{enumerate}
+  \item 根据理论选择解释变量和函数形式；
+  \item 检查残差是否仍与 $X$ 的非线性变换相关；
+  \item 比较不同设定的样本外预测与稳健性；
+  \item 区分预测关系、相关关系和因果关系。
+\end{enumerate}
+\end{proposition}
+
+\subsection*{第 3.2 节：普通最小二乘估计}
+
+\begin{proposition}[阅读笔记：OLS 的矩阵推导]\label{hw:reg:note:3:5}
+样本模型为
+\[
+Y=X\beta+u,
+\]
+其中 $Y$ 是 $n\times1$ 向量，$X$ 是满列秩的 $n\times K$ 矩阵。OLS 最小化残差平方和
+\[
+S(b)=(Y-Xb)'(Y-Xb).
+\]
+展开并求导：
+\[
+\frac{\partial S(b)}{\partial b}
+=-2X'Y+2X'Xb.
+\]
+一阶条件给出正规方程
+\[
+X'X\widehat\beta=X'Y,
+\]
+因此
+\[
+\boxed{\widehat\beta=(X'X)^{-1}X'Y}.
+\]
+残差满足
+\[
+\widehat u=Y-X\widehat\beta,\qquad X'\widehat u=0.
+\]
+最后一个等式说明残差与每一列解释变量样本正交。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：拟合值、残差和误差方差估计]\label{hw:reg:note:3:6}
+定义
+\[
+P=X(X'X)^{-1}X',\qquad M=I-P.
+\]
+则
+\[
+\widehat Y=PY,\qquad \widehat u=MY.
+\]
+若经典同方差假设
+\[
+\E(u\mid X)=0,\qquad \Var(u\mid X)=\sigma^2I_n
+\]
+成立，则
+\[
+\widehat\sigma^2=\frac{\widehat u'\widehat u}{n-K}
+\]
+是 $\sigma^2$ 的无偏估计，因为
+\[
+\E(\widehat u'\widehat u\mid X)
+=\E(u'Mu\mid X)
+=\sigma^2\tr(M)
+=\sigma^2(n-K).
+\]
+\end{proposition}
+
+\subsection*{第 3.3 节：几何解释与拟合优度}
+
+\begin{proposition}[阅读笔记：投影矩阵 $P$]\label{hw:reg:note:3:7}
+$P$ 把任意 $Y\in\mathbb R^n$ 正交投影到 $X$ 的列空间：
+\[
+\widehat Y=PY\in\mathcal C(X).
+\]
+它具有
+\[
+P'=P,\qquad P^2=P,\qquad PX=X,
+\]
+且
+\[
+\operatorname{rank}(P)=\tr(P)=K.
+\]
+对称性表示正交投影，幂等性表示投影一次后再次投影不会改变结果。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：消灭矩阵 $M$]\label{hw:reg:note:3:8}
+$M=I-P$ 把 $Y$ 投影到 $\mathcal C(X)$ 的正交补：
+\[
+\widehat u=MY.
+\]
+它具有
+\[
+M'=M,\qquad M^2=M,\qquad MX=0,
+\]
+以及
+\[
+\operatorname{rank}(M)=\tr(M)=n-K.
+\]
+名称“消灭矩阵”来自 $MX=0$：它消去所有位于解释变量列空间中的分量。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：几何分解与样本 $R^2$]\label{hw:reg:note:3:9}
+OLS 给出正交分解
+\[
+Y=\widehat Y+\widehat u,\qquad
+\widehat Y'\widehat u=0.
+\]
+若模型含截距，则 $\overline{\widehat Y}=\bar Y$、$\sum_i\widehat u_i=0$，并有
+\[
+\underbrace{\sum_i(Y_i-\bar Y)^2}_{TSS}
+=
+\underbrace{\sum_i(\widehat Y_i-\bar Y)^2}_{ESS}
++
+\underbrace{\sum_i\widehat u_i^2}_{RSS}.
+\]
+因此
+\[
+R^2=\frac{ESS}{TSS}=1-\frac{RSS}{TSS}.
+\]
+加入解释变量不会增加 RSS，所以普通 $R^2$ 不会下降；比较不同维度模型时还应结合调整 $R^2$、理论合理性和样本外表现。
+\end{proposition}
+
+\begin{proposition}[阅读笔记：本次笔记的结构]\label{hw:reg:note:3:10}
+\[
+\text{条件期望}
+\longrightarrow
+\text{最优线性投影}
+\longrightarrow
+\text{样本 OLS}
+\longrightarrow
+\text{投影矩阵与 }R^2.
+\]
+第二章给出总体层面的最优预测与正交条件；第 3.2 节把总体问题变成样本最小二乘；第 3.3 节用投影几何解释拟合值、残差和拟合优度。
+\end{proposition}
+
+
+\endgroup

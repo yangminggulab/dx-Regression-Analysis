@@ -1,0 +1,393 @@
+\chapter{古典线性回归模型}
+
+\begin{introduction}[本章的作用]
+\item OLS 用样本矩估计总体线性投影系数。
+\item 投影几何解释拟合值、残差与自由度。
+\item 外生性和球形方差支持无偏性与 BLUE；条件正态性支持精确推断。
+\end{introduction}
+总体单个观测的解释向量写为 $X_i\in\R^K$；样本设计矩阵写为 $\XX\in\R^{n\times K}$，第 $i$ 行为 $X_i'$。本章的分布与独立性均明确以 $\XX$ 为条件。
+
+\section{经典模型的假设}
+
+% SOURCE: 假设 3.1.1; page-0036.tex
+\begin{proposition}[线性（假设 3.1.1）]\label{reg:entry:34}
+设 $(Y_i,X_i')_{i=1}^n$ 为可观测随机样本，
+\[Y_i=X_i'\beta+u_i,\quad i=1,\ldots,n,\qquad \beta\in\R^K.\]
+$u_i$ 是不可观测扰动，$Y=(Y_1,\ldots,Y_n)'$、$u=(u_1,\ldots,u_n)'$，于是
+\[Y=\XX\beta+u,\quad \XX=(X_1,\ldots,X_n)',\quad \XX'\XX=\sum_iX_iX_i'.\]
+含截距时 $X_i=(1,X_{i1},\ldots,X_{ik})'$，$K=k+1$。
+\end{proposition}
+
+% SOURCE: 假设 3.1.2; page-0037.tex
+\begin{proposition}[严格外生性（假设 3.1.2）]\label{reg:entry:35}
+对于上述样本模型，假设
+\[\E[u_i\mid\XX]=\E[u_i\mid X_1,\ldots,X_n]=0,\quad i=1,\ldots,n.\]
+即 $\E[u\mid\XX]=0$。从而 $\E u_i=0$，且在相应乘积可积时 $\E[X_i u_j]=0$、$\Cov(X_i,u_j)=0$ 对所有 $i,j$ 成立。
+严格外生性一般强于逐观测 $\E[u_i\mid X_i]=0$；当观测对 $(X_i,u_i)$ 独立同分布时，两条件等价。
+\end{proposition}
+
+% SOURCE: 假设 3.1.3; page-0038.tex
+\begin{proposition}[秩条件（假设 3.1.3）]\label{reg:entry:36}
+假设 $\rank(\XX)=K<n$（随机设计时几乎必然）。则列线性无关，$\rank(\XX'\XX)=K$，$\XX'\XX$ 非奇异、可逆且正定。这排除严格多重共线性，确保 OLS 参数解唯一并留下正残差自由度。
+\end{proposition}
+
+% SOURCE: 假设 3.1.4; page-0038.tex
+\begin{proposition}[球形误差方差（假设 3.1.4）]\label{reg:entry:37}
+假设 $\sigma^2>0$ 且
+\[\E[u_i^2\mid\XX]=\sigma^2,\qquad \E[u_i u_j\mid\XX]=0\quad(i\ne j).\]
+结合严格外生性，等价于
+\[\Var(u\mid\XX)=\E[uu'\mid\XX]=\sigma^2 I_n.\]
+这同时要求条件同方差与跨观测条件不相关；不相关本身不等于独立。
+\end{proposition}
+
+\section{普通最小二乘估计}
+
+% SOURCE: 定义 3.2.1; page-0040.tex
+\begin{definition}[OLS]\label{reg:entry:38}
+线性模型的普通最小二乘估计定义为
+\[\bb=\argmin_{b\in\R^K}\operatorname{SSE}(b),\qquad \operatorname{SSE}(b)=\sum_i(Y_i-X_i'b)^2=(Y-\XX b)'(Y-\XX b).\]
+它用样本平方损失替代总体平方损失。
+\end{definition}
+
+% SOURCE: 定理 3.2.1; page-0040.tex
+\begin{theorem}[OLS 的显式解]\label{reg:entry:39}
+在线性模型与秩条件下，OLS 解存在且唯一，
+\[\bb=(\XX'\XX)^{-1}\XX'Y
+=\left(\frac1n\sum_iX_iX_i'\right)^{-1}\frac1n\sum_iX_iY_i.\]
+正规方程为 $\XX'\XX\bb=\XX'Y$，目标函数的 Hessian 为 $2\XX'\XX\succ0$。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0041.tex
+\begin{definition}[拟合值、残差与方差估计]\label{reg:entry:40}
+定义 $\widehat Y=\XX\bb$ 和 $\uh=Y-\widehat Y$。则
+\[\uh=u+\XX(\beta-\bb).\]
+扰动 $u$ 是模型中不可观测的真实误差，残差 $\uh$ 由估计参数计算，两者不可混同。定义
+\[\widehat\sigma^2=\frac{\uh'\uh}{n},\qquad s^2=\frac{\uh'\uh}{n-K}.\]
+后者在经典假设下修正自由度，并非任意模型下都无偏。
+\end{definition}
+
+% SOURCE: 定理 3.2.2; page-0041.tex
+\begin{theorem}[残差的样本正交性]\label{reg:entry:41}
+在线性模型与秩条件下，
+\[\XX'\uh=0,\qquad \widehat Y'\uh=0.\]
+若解释变量含常数项，则 $\sum_i\uh_i=0$，进而 $\overline{\widehat Y}=\bar Y$。这是 OLS 的代数性质，不要求正态性、外生性或同方差。
+\end{theorem}
+
+\section{投影几何与拟合优度}
+
+% SOURCE: 原文未编号概念或必要公式; page-0042.tex 至 page-0044.tex
+\begin{definition}[投影矩阵与消灭矩阵]\label{reg:entry:42}
+若 $\XX$ 满列秩，定义
+\[P=\XX(\XX'\XX)^{-1}\XX',\qquad M=I_n-P.\]
+$P$ 是到 $\mathcal C(\XX)$ 的正交投影，$M$ 是到该列空间正交补的投影。于是
+\[\widehat Y=PY,\qquad \uh=MY=Mu,\qquad P\XX=\XX,\quad M\XX=0,\quad PM=MP=0.\]
+\end{definition}
+
+% SOURCE: 定理 3.3.1; page-0042.tex
+\begin{theorem}[投影矩阵的性质]\label{reg:entry:43}
+对任意满列秩 $\XX\in\R^{n\times K}$，$n\geq K$，投影矩阵 $P$ 满足
+\[P'=P,\quad P'P=P^2=P,\quad \tr(P)=K,\quad\rank(P)=K.\]
+$P$ 的特征值为 $K$ 个 $1$ 和 $n-K$ 个 $0$。
+\end{theorem}
+
+% SOURCE: 定理 3.3.2; page-0043.tex
+\begin{theorem}[消灭矩阵的性质]\label{reg:entry:44}
+对任意满列秩 $\XX\in\R^{n\times K}$，$n\geq K$，$M=I_n-P$ 满足
+\[M'=M,\quad M'M=M^2=M,\quad \tr(M)=n-K,\quad\rank(M)=n-K.\]
+同时 $M\XX=0$。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0044.tex 至 page-0045.tex
+\begin{proposition}[正交分解与平方和]\label{reg:entry:45}
+满列秩时 $Y=\widehat Y+\uh$ 且 $\widehat Y'\uh=0$，所以 $Y'Y=\widehat Y'\widehat Y+\uh'\uh$。
+若含截距，中心化后有
+\begin{align*}
+\operatorname{TSS}&=\sum_i(Y_i-\bar Y)^2,\quad
+\operatorname{ESS}=\sum_i(\widehat Y_i-\bar Y)^2,\\
+\operatorname{RSS}&=\uh'\uh,\qquad \operatorname{TSS}=\operatorname{ESS}+\operatorname{RSS}.
+\end{align*}
+对应子空间维数（自由度）为 $n-1=(K-1)+(n-K)$。含截距条件不能省略。
+\end{proposition}
+
+% SOURCE: 定义 3.3.1; page-0045.tex
+\begin{definition}[决定系数]\label{reg:entry:46}
+含截距且 $\operatorname{TSS}>0$ 时，决定系数定义为
+\[\mathcal R^2=\frac{\operatorname{ESS}}{\operatorname{TSS}}=1-\frac{\operatorname{RSS}}{\operatorname{TSS}},\qquad0\leq\mathcal R^2\leq1.\]
+它度量样本中被线性拟合解释的中心化平方和比例。无截距时这两个表达式一般不等价。
+\end{definition}
+
+% SOURCE: 定理 3.3.3; page-0045.tex
+\begin{theorem}[加入变量后的决定系数]\label{reg:entry:47}
+在同一响应向量、同一样本、含截距且 $\operatorname{TSS}>0$ 的两个嵌套 OLS 模型中，较大模型在原 $k$ 个解释变量外增加 $q\geq1$ 个变量；两设计矩阵满足相应秩条件。则
+\[\operatorname{RSS}_{2}\leq\operatorname{RSS}_{1},\qquad \mathcal R_2^2\geq\mathcal R_1^2.\]
+这只说明训练样本拟合不会变差，不保证预测性能提高。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0046.tex
+\begin{definition}[调整决定系数]\label{reg:entry:48}
+含截距、$n>K$ 且 $\operatorname{TSS}>0$ 时，定义
+\[\overline{\mathcal R}^2=1-\frac{\operatorname{RSS}/(n-K)}{\operatorname{TSS}/(n-1)}
+=1-\frac{n-1}{n-K}(1-\mathcal R^2).\]
+它通过自由度惩罚解释变量数量，增加变量不保证其上升；可为负。
+\end{definition}
+
+\section{OLS 的统计性质}
+
+% SOURCE: 定理 3.4.1; page-0047.tex
+\begin{theorem}[无偏性]\label{reg:entry:49}
+在线性模型、严格外生性和秩条件下，
+\[\E[\bb\mid\XX]=\beta.\]
+若无条件期望存在，则 $\E\bb=\beta$。所有无条件矩结论均需相应可积性；随机矩阵逆的可积性并非仅由逐样本满秩保证。
+\end{theorem}
+
+% SOURCE: 定理 3.4.2; page-0047.tex
+\begin{theorem}[OLS 条件协方差]\label{reg:entry:50}
+在线性模型、严格外生性、秩条件和球形误差方差条件下，
+\[V_{\bb}:=\Var(\bb\mid\XX)=\sigma^2(\XX'\XX)^{-1}.\]
+\end{theorem}
+
+% SOURCE: 定义 3.4.1; page-0047.tex
+\begin{definition}[线性无偏估计量]\label{reg:entry:51}
+若估计量 $\widetilde\beta=L Y$，其中 $L\in\R^{K\times n}$ 可依赖于 $\XX$，但给定 $\XX$ 后不依赖于 $Y$，称其对 $Y$ 为线性估计。
+若对所有 $\beta$，$\E[\widetilde\beta\mid\XX]=\beta$，称线性无偏估计。在外生模型下，这等价于 $L\XX=I_K$。
+\end{definition}
+
+% SOURCE: 定理 3.4.3; page-0048.tex
+\begin{theorem}[Gauss--Markov]\label{reg:entry:52}
+在线性模型、严格外生性、秩条件及球形误差方差条件下，OLS 是最优线性无偏估计（BLUE）。对于任意线性无偏估计量 $\widetilde\beta$，
+\[\Var(\widetilde\beta\mid\XX)-\Var(\bb\mid\XX)\succeq0.\]
+“最小”指协方差矩阵的半正定顺序；不声称在全部非线性或有偏估计量中最优，也不要求正态误差。
+\end{theorem}
+
+% SOURCE: 定理 3.4.4; page-0049.tex
+\begin{theorem}[残差的矩性质]\label{reg:entry:53}
+在线性模型、严格外生性、秩条件及球形误差方差条件下，
+\[\E[\uh\mid\XX]=0,\quad \Var(\uh\mid\XX)=\sigma^2M,\quad \Cov(\bb,\uh\mid\XX)=0.\]
+条件不相关尚不能推出条件独立。
+\end{theorem}
+
+% SOURCE: 定理 3.4.5; page-0050.tex
+\begin{theorem}[方差估计的无偏性]\label{reg:entry:54}
+在线性模型、严格外生性、秩条件及球形误差方差条件下，
+\[\E[\uh'\uh\mid\XX]=(n-K)\sigma^2,\quad \E[s^2\mid\XX]=\sigma^2.\]
+所以 $\E[\widehat\sigma^2\mid\XX]=(n-K)\sigma^2/n$；OLS 协方差的无偏估计为
+\[\widehat V_{\bb}=s^2(\XX'\XX)^{-1},\qquad \E[\widehat V_{\bb}\mid\XX]=V_{\bb}.\]
+\end{theorem}
+
+\section{正态模型的精确分布}
+
+% SOURCE: 假设 3.5.1; page-0050.tex
+\begin{proposition}[条件正态性（假设 3.5.1）]\label{reg:entry:55}
+假设 $u\mid\XX\sim N(0,\sigma^2I_n)$，$\sigma^2>0$。该条件推出严格外生性和球形方差，且给定 $\XX$ 时各扰动独立。
+其条件密度和似然为
+\[f(u\mid\XX)=(2\pi\sigma^2)^{-n/2}\exp[-u'u/(2\sigma^2)],\]
+\[\ell(b,\sigma^2)=-\frac n2\log(2\pi\sigma^2)-\frac{(Y-\XX b)'(Y-\XX b)}{2\sigma^2}.\]
+在满列秩且 RSS 正的情形，极大似然解为 $\widehat b_{\rm MLE}=\bb$、$\widehat\sigma^2_{\rm MLE}=\operatorname{RSS}/n$。
+\end{proposition}
+
+% SOURCE: 定理 3.5.1; page-0051.tex
+\begin{theorem}[OLS 的条件正态分布]\label{reg:entry:56}
+在线性模型、秩条件和条件正态性下，$n>K$，
+\[\bb\mid\XX\sim N\!\left(\beta,\sigma^2(\XX'\XX)^{-1}\right).\]
+\end{theorem}
+
+% SOURCE: 定理 3.5.2; page-0052.tex
+\begin{theorem}[残差分布及条件独立性]\label{reg:entry:57}
+在线性模型、秩条件和条件正态性下，$n>K$，
+\[\uh\mid\XX\sim N(0,\sigma^2M).\]
+给定 $\XX$ 时，$\uh$ 与 $\bb$ 独立。因为 $M$ 秩为 $n-K<n$，这个残差正态分布是退化的。
+\end{theorem}
+
+% SOURCE: 定理 3.5.3; page-0052.tex
+\begin{theorem}[误差方差估计的分布]\label{reg:entry:58}
+在线性模型、秩条件和条件正态性下，$n>K$，
+\[\frac{(n-K)s^2}{\sigma^2}\biggm|\XX\sim\chi^2_{n-K}.\]
+给定 $\XX$ 时，$s^2$ 与 $\bb$ 独立。这里的条件独立不能一概改成无条件独立。
+\end{theorem}
+
+\section{线性限制的假设检验}
+
+% SOURCE: 原文未编号概念或必要公式; page-0053.tex 至 page-0054.tex
+\begin{definition}[线性限制与拒绝域]\label{reg:entry:59}
+令 $R\in\R^{J\times K}$ 满行秩，$r\in\R^J$，$1\leq J\leq K$，检验
+\[H_0:R\beta=r,\qquad H_1:R\beta\ne r.\]
+检验用原假设下的统计量分布确定显著性水平 $\alpha$ 的拒绝域。落在拒绝域时拒绝 $H_0$；没有拒绝不能当作证明 $H_0$ 为真。令 $Q=(\XX'\XX)^{-1}$，则 $RQR'\succ0$。
+\end{definition}
+
+% SOURCE: 定理 3.6.1; page-0054.tex
+\begin{theorem}[限制估计量的正态分布]\label{reg:entry:60}
+在线性模型、秩条件和条件正态性下，若 $H_0:R\beta=r$ 成立，且 $R$ 满行秩，
+\[R\bb-r\mid\XX\sim N(0,\sigma^2RQR').\]
+\end{theorem}
+
+% SOURCE: 定理 3.6.2; page-0054.tex
+\begin{theorem}[单个限制的 t 检验]\label{reg:entry:61}
+在线性模型、秩条件、条件正态性和 $H_0:R\beta=r$ 下，$n>K$、$J=1$ 且 $R\ne0$，
+\[T=\frac{R\bb-r}{\sqrt{s^2RQR'}}\biggm|\XX\sim t_{n-K}.\]
+双侧水平 $\alpha$ 检验在 $|T|>t_{n-K,1-\alpha/2}$ 时拒绝。对单个系数的置信区间为
+\[\bb_j\ \pm\ t_{n-K,1-\alpha/2}\sqrt{s^2Q_{jj}}.\]
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0055.tex
+\begin{proposition}[联合限制的 F 统计量]\label{reg:entry:62}
+在相同正态模型条件下，$R$ 满行秩，且 $H_0$ 成立，则
+\[F=\frac{(R\bb-r)'(RQR')^{-1}(R\bb-r)}{J s^2}\biggm|\XX\sim F_{J,n-K}.\]
+水平 $\alpha$ 检验在 $F>F_{J,n-K,1-\alpha}$ 时拒绝。$J=1$ 时 $F=T^2$。
+\end{proposition}
+
+% SOURCE: 定理 3.6.3; page-0056.tex
+\begin{theorem}[约束回归形式的 F 检验]\label{reg:entry:63}
+在线性模型、秩条件、条件正态性及 $H_0:R\beta=r$ 下，$n>K$，$R$ 有 $J$ 个独立限制。令 $\widetilde u$ 为约束最小二乘残差，$\uh$ 为无约束 OLS 残差，则
+\[F_1=\frac{(\widetilde u'\widetilde u-\uh'\uh)/J}{\uh'\uh/(n-K)}\biggm|\XX\sim F_{J,n-K}.\]
+它与上面的二次型形式相等。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0057.tex
+\begin{proposition}[所有斜率的联合检验]\label{reg:entry:64}
+含截距模型有 $K-1\geq1$ 个斜率。检验所有斜率为零时，约束拟合为 $\bar Y$，故约束 RSS 等于 TSS。若 TSS 正，则
+\[F=\frac{\mathcal R^2/(K-1)}{(1-\mathcal R^2)/(n-K)}.\]
+在上述正态模型与原假设下，$F\mid\XX\sim F_{K-1,n-K}$。
+\end{proposition}
+
+\section{拾遗：随机矩阵的矩}
+
+% SOURCE: 原文未编号概念或必要公式; page-0058.tex
+\begin{definition}[随机向量协方差]\label{reg:entry:65}
+随机矩阵期望逐元素定义，要求每个元素可积。对于二阶矩有限的向量 $X,Y$，
+\[\Cov(X,Y)=\E[(X-\E X)(Y-\E Y)'],\quad \Var(X)=\Cov(X,X).\]
+固定矩阵 $A,B$ 满足维度相容时，$\Cov(AX,BY)=A\Cov(X,Y)B'$。
+\end{definition}
+
+% SOURCE: 定理 3.7.1; page-0058.tex
+\begin{theorem}[期望的线性性质]\label{reg:entry:66}
+若随机矩阵或向量 $X,Y$ 的元素可积，$A,B$ 为维度相容的常数矩阵，则
+\[\E[AX+BY]=A\E[X]+B\E[Y].\]
+对于可积方阵，$\tr(\E X)=\E(\tr X)$。
+\end{theorem}
+
+% SOURCE: 定理 3.7.2; page-0058.tex
+\begin{theorem}[协方差矩阵的性质]\label{reg:entry:67}
+若 $X\in\R^K$ 且 $\E[X'X]<\infty$，记 $\mu=\E X$，$A$ 为常数矩阵、$b$ 为常数向量，则
+\[\Var(X)\succeq0,\quad \Var(X)=\E[XX']-\mu\mu',\quad \Var(AX+b)=A\Var(X)A'.\]
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; 补充工具公式：由协方差定义与迹性质得到
+\begin{proposition}[二次型期望的必要公式]\label{reg:entry:68}
+设 $X$ 二阶矩有限，$\mu=\E X$、$\Sigma=\Var(X)$，$A$ 为常数方阵，则
+\[\E[X'AX]=\tr(A\Sigma)+\mu'A\mu.\]
+此式把 RSS 的期望转化为投影矩阵的迹，是自由度修正的工具。
+\end{proposition}
+
+\section{拾遗：多元正态与二次型}
+
+% SOURCE: 定义 3.8.1; page-0059.tex
+\begin{definition}[多元正态分布]\label{reg:entry:69}
+若 $Z\sim N(0,I_m)$，$Y=\mu+BZ\in\R^d$，则称 $Y$ 多元正态，记 $Y\sim N(\mu,\Sigma)$，其中 $\Sigma=BB'$，$\E Y=\mu$、$\Var(Y)=\Sigma$。
+若 $\Sigma\succ0$，其密度为
+\[f(y)=(2\pi)^{-d/2}|\Sigma|^{-1/2}\exp[-(y-\mu)'\Sigma^{-1}(y-\mu)/2].\]
+若 $\Sigma$ 奇异，分布仍可由仿射表示定义，但不能使用这条相对于 $\R^d$ Lebesgue 测度的密度公式。
+\end{definition}
+
+% SOURCE: 定理 3.8.1; page-0059.tex
+\begin{theorem}[正态向量的仿射变换]\label{reg:entry:70}
+若 $Y\sim N(\mu,\Sigma)$，$a,C$ 为维度相容的常数向量和矩阵，则
+\[a+CY\sim N(a+C\mu,C\Sigma C').\]
+\end{theorem}
+
+% SOURCE: 定理 3.8.2; page-0060.tex
+\begin{theorem}[分块正态分布]\label{reg:entry:71}
+设 $Y=(Y_1',Y_2')'$ 联合正态，均值分块为 $(\mu_1',\mu_2')'$，协方差分块为 $(\Sigma_{ij})_{i,j=1,2}$。则
+\begin{enumerate}
+\item $Y_1\sim N(\mu_1,\Sigma_{11})$。
+\item 若 $\Sigma_{22}$ 可逆，则
+\[Y_1\mid Y_2\sim N\!\left(\mu_1+\Sigma_{12}\Sigma_{22}^{-1}(Y_2-\mu_2),\,
+\Sigma_{11}-\Sigma_{12}\Sigma_{22}^{-1}\Sigma_{21}\right).\]
+\item 若 $\Sigma_{12}=0$，则 $Y_1,Y_2$ 独立；联合正态下此条件也必要。
+\end{enumerate}
+\end{theorem}
+
+% SOURCE: 定理 3.8.3; page-0055.tex
+\begin{theorem}[正态平方和与卡方分布]\label{reg:entry:72}
+\begin{enumerate}
+\item 若 $Y\sim N(0,I_n)$，则 $Y'Y\sim\chi_n^2$。
+\item 若 $Y\sim N(0,\Sigma)$ 且 $\Sigma\succ0$，则 $Y'\Sigma^{-1}Y\sim\chi_n^2$。
+\item 若 $Y\sim N(\mu,I_n)$，则 $Y'Y\sim\chi_n^2(\lambda)$，$\lambda=\mu'\mu$。
+\item 若 $Y\sim N(\mu,\Sigma)$ 且 $\Sigma\succ0$，则 $Y'\Sigma^{-1}Y\sim\chi_n^2(\lambda)$，$\lambda=\mu'\Sigma^{-1}\mu$。
+\end{enumerate}
+非中心参数统一采用平方范数惯例，不带 $1/2$ 因子。
+\end{theorem}
+
+% SOURCE: 定理 3.8.4; page-0060.tex
+\begin{theorem}[正态投影二次型]\label{reg:entry:73}
+设 $Q$ 是非随机 $n\times n$ 对称幂等矩阵，$\rank Q=r\leq n$。若 $Y\sim N(0,I_n)$，则
+\[Y'QY\sim\chi_r^2.\]
+更一般地，若 $Z\sim N(\mu,I_n)$，则 $Z'QZ\sim\chi_r^2(\lambda)$，$\lambda=\mu'Q\mu$。$r=0$ 时按恒为零的退化分布理解。
+\end{theorem}
+
+% SOURCE: 定理 3.8.5; page-0061.tex
+\begin{theorem}[线性形式与二次型的独立性]\label{reg:entry:74}
+若 $Y\sim N(0,I_n)$，$A\in\R^{m\times n}$，$B\in\R^{n\times n}$ 为对称常数矩阵，且 $AB=0$，则 $AY$ 与 $Y'BY$ 独立。
+\end{theorem}
+
+% SOURCE: 定理 3.8.6; page-0061.tex
+\begin{theorem}[两个投影二次型的独立性]\label{reg:entry:75}
+若 $Y\sim N(0,I_n)$，$A,B$ 为 $n\times n$ 对称幂等常数矩阵，则
+\[Y'AY\ \text{与}\ Y'BY\ \text{独立}\quad\Longleftrightarrow\quad AB=0.\]
+\end{theorem}
+
+\section{拾遗：约束最小二乘回归}
+
+% SOURCE: 原文未编号概念或必要公式; page-0061.tex 至 page-0062.tex
+\begin{definition}[CLS 及其显式解]\label{reg:entry:76}
+令 $Q=(\XX'\XX)^{-1}$，$R\in\R^{J\times K}$ 满行秩，$1\leq J\leq K$，$r\in\R^J$。在满列秩条件下定义
+\[\widetilde\beta=\argmin_{Rb=r}(Y-\XX b)'(Y-\XX b).\]
+解及相关矩阵为
+\begin{align*}
+\widetilde\beta&=\bb-QR'(RQR')^{-1}(R\bb-r),\\
+A&=QR'(RQR')^{-1}RQ,\qquad D=(Q-A)\XX'.
+\end{align*}
+$RQR'\succ0$；只有真实参数满足 $R\beta=r$ 时，才有 $\widetilde\beta=\beta+Du$。
+\end{definition}
+
+% SOURCE: 定理 3.9.1; page-0062.tex
+\begin{theorem}[CLS 的无偏性]\label{reg:entry:77}
+在线性模型、严格外生性、秩条件及真实限制 $R\beta=r$ 下，$R$ 满行秩，则
+\[\E[\widetilde\beta\mid\XX]=\beta.\]
+错误限制通常导致有偏，不能省去真实限制条件。
+\end{theorem}
+
+% SOURCE: 定理 3.9.2; page-0063.tex
+\begin{theorem}[CLS 的条件协方差]\label{reg:entry:78}
+在线性模型、严格外生性、秩条件、球形误差方差及真实限制 $R\beta=r$ 下，$R$ 满行秩，则
+\[V_{\widetilde\beta}:=\Var(\widetilde\beta\mid\XX)=\sigma^2DD'=\sigma^2(Q-A).\]
+\end{theorem}
+
+% SOURCE: 定理 3.9.3; page-0063.tex
+\begin{theorem}[真实限制带来的方差改进]\label{reg:entry:79}
+在线性模型、严格外生性、秩条件、球形误差方差及真实限制 $R\beta=r$ 下，$R$ 满行秩，则
+\[V_{\bb}-V_{\widetilde\beta}=\sigma^2 A\succeq0.\]
+限制利用额外的真实信息降低方差，与 Gauss--Markov 在无约束参数空间上的最优性并不冲突。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0063.tex 至 page-0064.tex
+\begin{definition}[CLS 残差与方差估计]\label{reg:entry:80}
+令 $\widetilde u=Y-\XX\widetilde\beta$。在真实限制 $R\beta=r$ 下，
+\[\widetilde u=Cu,\qquad C=M+\XX A\XX'.\]
+$C$ 对称幂等，$\tr C=\rank C=n-K+J$。定义
+\[s_{\rm cls}^2=\frac{\widetilde u'\widetilde u}{n-K+J},\qquad \widehat V_{\widetilde\beta}=s_{\rm cls}^2(Q-A).\]
+\end{definition}
+
+% SOURCE: 定理 3.9.4; page-0064.tex
+\begin{theorem}[CLS 方差估计的无偏性]\label{reg:entry:81}
+在线性模型、严格外生性、秩条件、球形误差方差及真实限制 $R\beta=r$ 下，$R$ 满行秩，则
+\[\E[s_{\rm cls}^2\mid\XX]=\sigma^2,\qquad \E[\widehat V_{\widetilde\beta}\mid\XX]=V_{\widetilde\beta}.\]
+\end{theorem}
+
+% SOURCE: 定理 3.9.5; page-0065.tex
+\begin{theorem}[CLS 的条件抽样分布]\label{reg:entry:82}
+在线性模型、秩条件、条件正态性及真实限制 $R\beta=r$ 下，$R$ 满行秩，则
+\[\widetilde\beta\mid\XX\sim N\!\left(\beta,\sigma^2(Q-A)\right),\qquad
+\frac{(n-K+J)s_{\rm cls}^2}{\sigma^2}\biggm|\XX\sim\chi^2_{n-K+J}.\]
+参数分布一般退化，反映 $J$ 个确定限制。
+\end{theorem}
+

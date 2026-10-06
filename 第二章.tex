@@ -1,0 +1,181 @@
+\chapter{条件期望函数}
+
+\begin{introduction}[本章的作用]
+\item 条件期望是平方损失下的最优预测。
+\item 线性投影把全部函数的优化限制为仿射函数。
+\item 正确设定连接投影系数与真实条件均值参数。
+\end{introduction}
+本章 $Y\in\R$，总体解释向量 $X\in\R^K$；含截距时统一写成 $X=(1,X_1,\ldots,X_k)'$，$K=k+1$。
+\section{条件期望、重期望与最优预测}
+
+% SOURCE: 定义 2.1.1; page-0019.tex
+\begin{definition}[条件期望函数]\label{reg:entry:11}
+若 $\E|Y|<\infty$，定义 $\mu(x)=\E[Y\mid X=x]$，称为条件期望函数（CEF）；作为随机变量写成 $\mu(X)=\E[Y\mid X]$。连续情形可用条件密度积分，离散情形用条件分布求和。等式按几乎处处意义理解。
+\end{definition}
+
+% SOURCE: 原文未编号概念或必要公式; page-0020.tex
+\begin{proposition}[条件期望的基本性质]\label{reg:entry:12}
+在所涉及随机变量可积的条件下，对于常数 $a,b$ 和可测函数 $g$，
+\[\E[aY+b\mid X]=a\E[Y\mid X]+b,\qquad \E[g(X)Y\mid X]=g(X)\E[Y\mid X].\]
+若 $X,Y$ 独立，则 $\E[Y\mid X]=\E Y$，以及 $\E[g(X)Y\mid X]=g(X)\E Y$。乘积公式要求 $g(X)Y$ 可积。
+\end{proposition}
+
+% SOURCE: 定义 2.1.2; page-0020.tex
+\begin{definition}[均值独立]\label{reg:entry:13}
+若 $\E[Y\mid X]=\E Y$，称 $Y$ 均值独立于 $X$。此性质通常不对称。相互独立推出两个方向的均值独立；若 $X,Y$ 二阶矩有限，任一方向的均值独立均推出 $\Cov(X,Y)=0$。这些逆命题一般不成立。
+\end{definition}
+
+% SOURCE: 定理 2.1.1; page-0021.tex
+\begin{theorem}[重期望公式 I]\label{reg:entry:14}
+若 $\E|Y|<\infty$，则对任意随机向量 $X$，
+\[\E_X\bigl[\E_Y[Y\mid X]\bigr]=\E_Y[Y].\]
+\end{theorem}
+
+% SOURCE: 定理 2.1.2; page-0022.tex
+\begin{theorem}[重期望公式 II]\label{reg:entry:15}
+对任意可测函数 $G(X,Y)$，若 $\E|G(X,Y)|<\infty$，则
+\[\E_X\bigl[\E_Y[G(X,Y)\mid X]\bigr]=\E_{X,Y}[G(X,Y)].\]
+\end{theorem}
+
+% SOURCE: 定义 2.1.3; page-0022.tex
+\begin{definition}[均方误差]\label{reg:entry:16}
+用可测函数 $g(X)$ 预测 $Y$，定义均方误差
+\[\operatorname{MSE}(g)=\E[(Y-g(X))^2].\]
+以下最优预测结论要求 $Y$ 及候选预测函数平方可积。
+\end{definition}
+
+% SOURCE: 定理 2.1.3; page-0022.tex
+\begin{theorem}[最优预测]\label{reg:entry:17}
+设 $\E Y^2<\infty$，$\mathbb F=\{g:\R^K\to\R:\ g\text{可测},\ \E[g(X)^2]<\infty\}$。则
+\[\mu(X)=\E[Y\mid X]=\argmin_{g\in\mathbb F}\operatorname{MSE}(g).\]
+更准确地，最优预测在几乎处处意义下唯一，且
+\[\operatorname{MSE}(g)=\E[(Y-\mu(X))^2]+\E[(\mu(X)-g(X))^2].\]
+\end{theorem}
+
+\section{条件方差与 CEF 误差}
+
+% SOURCE: 定义 2.1.4; page-0023.tex
+\begin{definition}[条件方差]\label{reg:entry:18}
+若 $\E Y^2<\infty$，定义
+\begin{align*}
+\sigma^2(X)&=\Var(Y\mid X)=\E[(Y-\E[Y\mid X])^2\mid X]\\
+&=\E[Y^2\mid X]-\bigl(\E[Y\mid X]\bigr)^2.
+\end{align*}
+在 $X=x$ 时记为 $\sigma^2(x)$。
+\end{definition}
+
+% SOURCE: 定理 2.1.4; page-0024.tex
+\begin{theorem}[条件方差分解]\label{reg:entry:19}
+若 $\E Y^2<\infty$，则
+\[\Var(Y)=\E[\Var(Y\mid X)]+\Var(\E[Y\mid X]).\]
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0024.tex 至 page-0025.tex
+\begin{definition}[CEF 误差]\label{reg:entry:20}
+定义 $e=Y-\mu(X)$，其中 $\mu(X)=\E[Y\mid X]$。由此得 $Y=\mu(X)+e$。
+反过来，若 $Y=\mu(X)+e$，$Y,e$ 可积、$\mu$ 可测且 $\E[e\mid X]=0$，则 $\mu(X)=\E[Y\mid X]$。
+\end{definition}
+
+% SOURCE: 定理 2.1.5; page-0024.tex
+\begin{theorem}[CEF 误差的正交性]\label{reg:entry:21}
+若 $\E|Y|<\infty$，$e=Y-\E[Y\mid X]$，则
+\[\E[e\mid X]=0,\qquad \E e=0.\]
+对任意可测函数 $h$，若 $\E|h(X)e|<\infty$，还有 $\E[h(X)e]=0$。乘积可积条件不可省略。
+\end{theorem}
+
+% SOURCE: 定义 2.1.5; page-0025.tex
+\begin{definition}[同方差与异方差]\label{reg:entry:22}
+对于平方可积的 CEF 误差，$\Var(e\mid X)=\sigma^2(X)$。若 $\sigma^2(x)=\sigma^2$ 不依赖 $x$（几乎处处），称误差同方差；若依赖于 $x$，称异方差。零条件均值并不推出同方差或统计独立。
+\end{definition}
+
+\section{线性 CEF 与最优线性预测}
+
+% SOURCE: 定义 2.2.1; page-0026.tex
+\begin{definition}[仿射函数]\label{reg:entry:23}
+令 $X=(1,X_1,\ldots,X_k)'\in\R^K$，$K=k+1$，$\beta=(\beta_0,\ldots,\beta_k)'$。仿射函数类为
+\[\mathbb A=\left\{g(X)=X'\beta=\beta_0+\sum_{j=1}^k\beta_jX_j:\ \beta\in\R^K\right\}.\]
+把常数 $1$ 放入解释向量后，可统一称为对扩充向量 $X$ 的线性函数。
+\end{definition}
+
+% SOURCE: 定义 2.2.2; page-0026.tex
+\begin{definition}[线性模型与线性 CEF]\label{reg:entry:24}
+当 $g\in\mathbb A$ 时，$Y=g(X)+e=X'\beta+e$ 称为 $Y$ 对 $X$ 的线性模型。
+若另有 $\E[e\mid X]=0$，则 $\E[Y\mid X]=X'\beta$，称为线性 CEF 模型。仅有代数分解并不保证条件均值线性。
+\end{definition}
+
+% SOURCE: 假设 2.2.1; page-0027.tex
+\begin{proposition}[线性预测的矩与识别条件（假设 2.2.1）]\label{reg:entry:25}
+设 $X\in\R^K$、$Y\in\R$，满足
+\[\E Y^2<\infty,\qquad \E\|X\|^2<\infty,\qquad Q_{XX}:=\E[XX']\succ0.\]
+前两条保证二阶矩和混合矩有限；正定性保证 $Q_{XX}$ 可逆，排除总体上的精确线性依赖。
+\end{proposition}
+
+% SOURCE: 定义 2.2.3; page-0028.tex
+\begin{definition}[最优线性预测与投影系数]\label{reg:entry:26}
+在上述矩条件下，最优线性预测（线性投影）定义为
+\[L(Y\mid X)=X'\beta^*,\qquad \beta^*=\argmin_{\beta\in\R^K}\E[(Y-X'\beta)^2].\]
+称 $\beta^*$ 为线性投影系数。目标函数为
+\[S(\beta)=\E Y^2-2\beta'\E[XY]+\beta'Q_{XX}\beta.\]
+\end{definition}
+
+% SOURCE: 定理 2.2.1; page-0028.tex
+\begin{theorem}[投影系数的存在唯一性]\label{reg:entry:27}
+在假设 2.2.1 的有限二阶矩与正定性条件下，$\beta^*$ 存在且唯一，
+\[\beta^*=Q_{XX}^{-1}\E[XY].\]
+正规方程为 $Q_{XX}\beta^*=\E[XY]$，Hessian 为 $2Q_{XX}\succ0$。
+\end{theorem}
+
+% SOURCE: 定理 2.2.2; page-0029.tex
+\begin{theorem}[投影误差的刻画]\label{reg:entry:28}
+在假设 2.2.1 的条件下，令 $Y=X'\beta+e_L$，则
+\[\beta=\beta^*\quad\Longleftrightarrow\quad\E[Xe_L]=0.\]
+若 $X$ 含常数项，则 $\E e_L=0$。一般 $\E[e_L\mid X]$ 未必为零；CEF 误差与投影误差只在线性 CEF 的情形一致。
+\end{theorem}
+
+% SOURCE: 原文未编号概念或必要公式; page-0030.tex
+\begin{proposition}[CEF 与线性投影的损失比较]\label{reg:entry:29}
+设上述条件成立，并令 $e_L=Y-X'\beta^*$。则
+\[\E[(Y-X'\beta^*)^2]=\E[(Y-\mu(X))^2]+\E[(\mu(X)-X'\beta^*)^2].\]
+因此最优线性预测的 MSE 不小于 CEF 的 MSE；等号当且仅当 $\mu(X)=X'\beta^*$ 几乎处处。不能把两个预测器本身写成大小不等式。
+\end{proposition}
+
+\section{条件均值模型的正确设定}
+
+% SOURCE: 定义 2.3.1; page-0031.tex
+\begin{definition}[正确设定与错误设定]\label{reg:entry:30}
+对 $Y\in\R$、$X\in\R^K$，若存在 $\beta^o\in\R^K$ 使
+\[\E[Y\mid X]=X'\beta^o\quad\text{几乎处处},\]
+称线性模型对条件均值正确设定；若不存在这样的参数，称错误设定。正确设定等价于存在 $\beta^o$ 使误差 $Y-X'\beta^o$ 的条件均值为零。
+\end{definition}
+
+% SOURCE: 定理 2.3.1; page-0031.tex
+\begin{theorem}[正确设定连接 CEF 与投影]\label{reg:entry:31}
+在假设 2.2.1 的矩条件下，若线性模型对 $\E[Y\mid X]$ 正确设定，则：
+\begin{enumerate}
+\item 存在 $\beta^o$ 和 $e=Y-X'\beta^o$，使 $Y=X'\beta^o+e$ 且 $\E[e\mid X]=0$。
+\item 线性投影系数满足 $\beta^*=\beta^o$。
+\end{enumerate}
+对于连续解释变量 $X_j$，线性 CEF 给出偏导 $\partial\E[Y\mid X]/\partial X_j=\beta_j^o$；截距不属于这一偏导，因果解释仍需额外条件。
+\end{theorem}
+
+\section{拾遗：矩阵求导}
+
+% SOURCE: 原文未编号概念或必要公式; page-0033.tex
+\begin{definition}[梯度与导数排列]\label{reg:entry:32}
+对可微标量函数 $g:\R^K\to\R$，采用列梯度
+\[\frac{\partial g(x)}{\partial x}=(\partial g/\partial x_1,\ldots,\partial g/\partial x_K)'.\]
+对列向量函数 $F$，Jacobian 的 $(i,j)$ 元为 $\partial F_i/\partial x_j$。行向量函数的按列梯度堆叠与此互为转置。
+\end{definition}
+
+% SOURCE: 定理 2.5.1; page-0034.tex
+\begin{theorem}[线性与二次型求导]\label{reg:entry:33}
+设 $A\in\R^{K\times K}$、$x,w\in\R^K$，$A,w$ 不依赖 $x$。按上述排列约定，
+\begin{align*}
+\frac{\partial(w'x)}{\partial x}&=\frac{\partial(x'w)}{\partial x}=w,\\
+\frac{\partial(x'A)}{\partial x}&=A,\qquad \frac{\partial(Ax)}{\partial x'}=A,\\
+\frac{\partial(x'Ax)}{\partial x}&=(A+A')x,\\
+\frac{\partial^2(x'Ax)}{\partial x\partial x'}&=A+A'.
+\end{align*}
+若 $A$ 对称，后两式化为 $2Ax$ 和 $2A$。
+\end{theorem}
+

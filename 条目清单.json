@@ -1,0 +1,658 @@
+[
+  {
+    "chapter": 1,
+    "environment": "definition",
+    "title": "回归分析与 CEF",
+    "original": null,
+    "page_file": "page-0005.tex",
+    "label": "reg:entry:1"
+  },
+  {
+    "chapter": 1,
+    "environment": "proposition",
+    "title": "二元正态的回归关系",
+    "original": null,
+    "page_file": "page-0007.tex 至 page-0010.tex",
+    "label": "reg:entry:2"
+  },
+  {
+    "chapter": 1,
+    "environment": "definition",
+    "title": "相关系数",
+    "original": "定义 1.2.1",
+    "page_file": "page-0010.tex",
+    "label": "reg:entry:3"
+  },
+  {
+    "chapter": 1,
+    "environment": "theorem",
+    "title": "相关系数与 Cauchy--Schwarz",
+    "original": "定理 1.2.1",
+    "page_file": "page-0011.tex",
+    "label": "reg:entry:4"
+  },
+  {
+    "chapter": 1,
+    "environment": "definition",
+    "title": "样本相关系数",
+    "original": null,
+    "page_file": "page-0013.tex",
+    "label": "reg:entry:5"
+  },
+  {
+    "chapter": 1,
+    "environment": "theorem",
+    "title": "样本相关系数的一致性",
+    "original": "定理 1.2.2",
+    "page_file": "page-0012.tex",
+    "label": "reg:entry:6"
+  },
+  {
+    "chapter": 1,
+    "environment": "proposition",
+    "title": "相关性与因果关系",
+    "original": null,
+    "page_file": "page-0014.tex",
+    "label": "reg:entry:7"
+  },
+  {
+    "chapter": 1,
+    "environment": "proposition",
+    "title": "四步建模及两类假设",
+    "original": null,
+    "page_file": "page-0014.tex 至 page-0016.tex",
+    "label": "reg:entry:8"
+  },
+  {
+    "chapter": 1,
+    "environment": "definition",
+    "title": "DAG",
+    "original": null,
+    "page_file": "page-0016.tex",
+    "label": "reg:entry:9"
+  },
+  {
+    "chapter": 1,
+    "environment": "proposition",
+    "title": "三种基本路径的功能",
+    "original": null,
+    "page_file": "page-0016.tex 至 page-0018.tex",
+    "label": "reg:entry:10"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "条件期望函数",
+    "original": "定义 2.1.1",
+    "page_file": "page-0019.tex",
+    "label": "reg:entry:11"
+  },
+  {
+    "chapter": 2,
+    "environment": "proposition",
+    "title": "条件期望的基本性质",
+    "original": null,
+    "page_file": "page-0020.tex",
+    "label": "reg:entry:12"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "均值独立",
+    "original": "定义 2.1.2",
+    "page_file": "page-0020.tex",
+    "label": "reg:entry:13"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "重期望公式 I",
+    "original": "定理 2.1.1",
+    "page_file": "page-0021.tex",
+    "label": "reg:entry:14"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "重期望公式 II",
+    "original": "定理 2.1.2",
+    "page_file": "page-0022.tex",
+    "label": "reg:entry:15"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "均方误差",
+    "original": "定义 2.1.3",
+    "page_file": "page-0022.tex",
+    "label": "reg:entry:16"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "最优预测",
+    "original": "定理 2.1.3",
+    "page_file": "page-0022.tex",
+    "label": "reg:entry:17"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "条件方差",
+    "original": "定义 2.1.4",
+    "page_file": "page-0023.tex",
+    "label": "reg:entry:18"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "条件方差分解",
+    "original": "定理 2.1.4",
+    "page_file": "page-0024.tex",
+    "label": "reg:entry:19"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "CEF 误差",
+    "original": null,
+    "page_file": "page-0024.tex 至 page-0025.tex",
+    "label": "reg:entry:20"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "CEF 误差的正交性",
+    "original": "定理 2.1.5",
+    "page_file": "page-0024.tex",
+    "label": "reg:entry:21"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "同方差与异方差",
+    "original": "定义 2.1.5",
+    "page_file": "page-0025.tex",
+    "label": "reg:entry:22"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "仿射函数",
+    "original": "定义 2.2.1",
+    "page_file": "page-0026.tex",
+    "label": "reg:entry:23"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "线性模型与线性 CEF",
+    "original": "定义 2.2.2",
+    "page_file": "page-0026.tex",
+    "label": "reg:entry:24"
+  },
+  {
+    "chapter": 2,
+    "environment": "proposition",
+    "title": "线性预测的矩与识别条件（假设 2.2.1）",
+    "original": "假设 2.2.1",
+    "page_file": "page-0027.tex",
+    "label": "reg:entry:25"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "最优线性预测与投影系数",
+    "original": "定义 2.2.3",
+    "page_file": "page-0028.tex",
+    "label": "reg:entry:26"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "投影系数的存在唯一性",
+    "original": "定理 2.2.1",
+    "page_file": "page-0028.tex",
+    "label": "reg:entry:27"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "投影误差的刻画",
+    "original": "定理 2.2.2",
+    "page_file": "page-0029.tex",
+    "label": "reg:entry:28"
+  },
+  {
+    "chapter": 2,
+    "environment": "proposition",
+    "title": "CEF 与线性投影的损失比较",
+    "original": null,
+    "page_file": "page-0030.tex",
+    "label": "reg:entry:29"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "正确设定与错误设定",
+    "original": "定义 2.3.1",
+    "page_file": "page-0031.tex",
+    "label": "reg:entry:30"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "正确设定连接 CEF 与投影",
+    "original": "定理 2.3.1",
+    "page_file": "page-0031.tex",
+    "label": "reg:entry:31"
+  },
+  {
+    "chapter": 2,
+    "environment": "definition",
+    "title": "梯度与导数排列",
+    "original": null,
+    "page_file": "page-0033.tex",
+    "label": "reg:entry:32"
+  },
+  {
+    "chapter": 2,
+    "environment": "theorem",
+    "title": "线性与二次型求导",
+    "original": "定理 2.5.1",
+    "page_file": "page-0034.tex",
+    "label": "reg:entry:33"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "线性（假设 3.1.1）",
+    "original": "假设 3.1.1",
+    "page_file": "page-0036.tex",
+    "label": "reg:entry:34"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "严格外生性（假设 3.1.2）",
+    "original": "假设 3.1.2",
+    "page_file": "page-0037.tex",
+    "label": "reg:entry:35"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "秩条件（假设 3.1.3）",
+    "original": "假设 3.1.3",
+    "page_file": "page-0038.tex",
+    "label": "reg:entry:36"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "球形误差方差（假设 3.1.4）",
+    "original": "假设 3.1.4",
+    "page_file": "page-0038.tex",
+    "label": "reg:entry:37"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "OLS",
+    "original": "定义 3.2.1",
+    "page_file": "page-0040.tex",
+    "label": "reg:entry:38"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "OLS 的显式解",
+    "original": "定理 3.2.1",
+    "page_file": "page-0040.tex",
+    "label": "reg:entry:39"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "拟合值、残差与方差估计",
+    "original": null,
+    "page_file": "page-0041.tex",
+    "label": "reg:entry:40"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "残差的样本正交性",
+    "original": "定理 3.2.2",
+    "page_file": "page-0041.tex",
+    "label": "reg:entry:41"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "投影矩阵与消灭矩阵",
+    "original": null,
+    "page_file": "page-0042.tex 至 page-0044.tex",
+    "label": "reg:entry:42"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "投影矩阵的性质",
+    "original": "定理 3.3.1",
+    "page_file": "page-0042.tex",
+    "label": "reg:entry:43"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "消灭矩阵的性质",
+    "original": "定理 3.3.2",
+    "page_file": "page-0043.tex",
+    "label": "reg:entry:44"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "正交分解与平方和",
+    "original": null,
+    "page_file": "page-0044.tex 至 page-0045.tex",
+    "label": "reg:entry:45"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "决定系数",
+    "original": "定义 3.3.1",
+    "page_file": "page-0045.tex",
+    "label": "reg:entry:46"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "加入变量后的决定系数",
+    "original": "定理 3.3.3",
+    "page_file": "page-0045.tex",
+    "label": "reg:entry:47"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "调整决定系数",
+    "original": null,
+    "page_file": "page-0046.tex",
+    "label": "reg:entry:48"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "无偏性",
+    "original": "定理 3.4.1",
+    "page_file": "page-0047.tex",
+    "label": "reg:entry:49"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "OLS 条件协方差",
+    "original": "定理 3.4.2",
+    "page_file": "page-0047.tex",
+    "label": "reg:entry:50"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "线性无偏估计量",
+    "original": "定义 3.4.1",
+    "page_file": "page-0047.tex",
+    "label": "reg:entry:51"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "Gauss--Markov",
+    "original": "定理 3.4.3",
+    "page_file": "page-0048.tex",
+    "label": "reg:entry:52"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "残差的矩性质",
+    "original": "定理 3.4.4",
+    "page_file": "page-0049.tex",
+    "label": "reg:entry:53"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "方差估计的无偏性",
+    "original": "定理 3.4.5",
+    "page_file": "page-0050.tex",
+    "label": "reg:entry:54"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "条件正态性（假设 3.5.1）",
+    "original": "假设 3.5.1",
+    "page_file": "page-0050.tex",
+    "label": "reg:entry:55"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "OLS 的条件正态分布",
+    "original": "定理 3.5.1",
+    "page_file": "page-0051.tex",
+    "label": "reg:entry:56"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "残差分布及条件独立性",
+    "original": "定理 3.5.2",
+    "page_file": "page-0052.tex",
+    "label": "reg:entry:57"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "误差方差估计的分布",
+    "original": "定理 3.5.3",
+    "page_file": "page-0052.tex",
+    "label": "reg:entry:58"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "线性限制与拒绝域",
+    "original": null,
+    "page_file": "page-0053.tex 至 page-0054.tex",
+    "label": "reg:entry:59"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "限制估计量的正态分布",
+    "original": "定理 3.6.1",
+    "page_file": "page-0054.tex",
+    "label": "reg:entry:60"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "单个限制的 t 检验",
+    "original": "定理 3.6.2",
+    "page_file": "page-0054.tex",
+    "label": "reg:entry:61"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "联合限制的 F 统计量",
+    "original": null,
+    "page_file": "page-0055.tex",
+    "label": "reg:entry:62"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "约束回归形式的 F 检验",
+    "original": "定理 3.6.3",
+    "page_file": "page-0056.tex",
+    "label": "reg:entry:63"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "所有斜率的联合检验",
+    "original": null,
+    "page_file": "page-0057.tex",
+    "label": "reg:entry:64"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "随机向量协方差",
+    "original": null,
+    "page_file": "page-0058.tex",
+    "label": "reg:entry:65"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "期望的线性性质",
+    "original": "定理 3.7.1",
+    "page_file": "page-0058.tex",
+    "label": "reg:entry:66"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "协方差矩阵的性质",
+    "original": "定理 3.7.2",
+    "page_file": "page-0058.tex",
+    "label": "reg:entry:67"
+  },
+  {
+    "chapter": 3,
+    "environment": "proposition",
+    "title": "二次型期望的必要公式",
+    "original": null,
+    "page_file": "补充工具公式：由协方差定义与迹性质得到",
+    "label": "reg:entry:68"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "多元正态分布",
+    "original": "定义 3.8.1",
+    "page_file": "page-0059.tex",
+    "label": "reg:entry:69"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "正态向量的仿射变换",
+    "original": "定理 3.8.1",
+    "page_file": "page-0059.tex",
+    "label": "reg:entry:70"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "分块正态分布",
+    "original": "定理 3.8.2",
+    "page_file": "page-0060.tex",
+    "label": "reg:entry:71"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "正态平方和与卡方分布",
+    "original": "定理 3.8.3",
+    "page_file": "page-0055.tex",
+    "label": "reg:entry:72"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "正态投影二次型",
+    "original": "定理 3.8.4",
+    "page_file": "page-0060.tex",
+    "label": "reg:entry:73"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "线性形式与二次型的独立性",
+    "original": "定理 3.8.5",
+    "page_file": "page-0061.tex",
+    "label": "reg:entry:74"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "两个投影二次型的独立性",
+    "original": "定理 3.8.6",
+    "page_file": "page-0061.tex",
+    "label": "reg:entry:75"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "CLS 及其显式解",
+    "original": null,
+    "page_file": "page-0061.tex 至 page-0062.tex",
+    "label": "reg:entry:76"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "CLS 的无偏性",
+    "original": "定理 3.9.1",
+    "page_file": "page-0062.tex",
+    "label": "reg:entry:77"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "CLS 的条件协方差",
+    "original": "定理 3.9.2",
+    "page_file": "page-0063.tex",
+    "label": "reg:entry:78"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "真实限制带来的方差改进",
+    "original": "定理 3.9.3",
+    "page_file": "page-0063.tex",
+    "label": "reg:entry:79"
+  },
+  {
+    "chapter": 3,
+    "environment": "definition",
+    "title": "CLS 残差与方差估计",
+    "original": null,
+    "page_file": "page-0063.tex 至 page-0064.tex",
+    "label": "reg:entry:80"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "CLS 方差估计的无偏性",
+    "original": "定理 3.9.4",
+    "page_file": "page-0064.tex",
+    "label": "reg:entry:81"
+  },
+  {
+    "chapter": 3,
+    "environment": "theorem",
+    "title": "CLS 的条件抽样分布",
+    "original": "定理 3.9.5",
+    "page_file": "page-0065.tex",
+    "label": "reg:entry:82"
+  }
+]
